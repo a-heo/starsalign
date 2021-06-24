@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-heo/tictactoe.git"
+    "url": "git+https://github.com/a-heo/starsalign.git"
   },
   "author": "heo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/a-heo/tictactoe/issues"
+    "url": "https://github.com/a-heo/starsalign/issues"
   },
-  "homepage": "https://github.com/a-heo/tictactoe#readme",
+  "homepage": "https://github.com/a-heo/starsalign#readme",
   "eslintConfig": {
     "extends": [
       "airbnb",
