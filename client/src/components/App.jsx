@@ -1,10 +1,33 @@
 import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from 'react-router-dom';
 
 const App = () => {
   const [login, setLogin] = useState(false);
 
   return (
-    <div>hello world from the front!</div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="login">Login</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </Router>
   );
 };
 
