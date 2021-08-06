@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const userRouter = require('./routes/user');
 
 const app = express();
 
@@ -12,10 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use('/', express.static(PUBLIC_DIR));
 
-// app.get('/', (req, res) => {
-//   res.send('hello world from the back');
-// });
+app.use('/user', userRouter);
 
 app.listen(port, () => {
   console.log(`starsalign is listening at http://localhost:${port}`);
 });
+
+module.exports = app;
