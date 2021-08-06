@@ -7,15 +7,6 @@ const sequelize = new Sequelize('starsalign', login.user, login.password, {
 });
 const Users = require('../model/user');
 
-// Users.sync({ force: true })
-
-// try {
-//     await sequelize.authenticate();
-//     console.log('Connection successed for sequelize');
-// } catch (error) {
-//     console.log('sequelize did not connect', error);
-// };
-
 sequelize.authenticate()
   .then((result) => {
     console.log('mysql successfully connected');
