@@ -1,62 +1,34 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import Login from './Login';
-import Signup from './Signup';
+
+import Routes from './Navigation/Routes';
+import Navigate from './Navigation/Navigate';
+
+const axios = require('axios');
 
 const App = () => {
   const [login, setLogin] = useState(false);
 
+  const saveUser = (data) => {
+    axios.post('/user', {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      userId: data.userId,
+      password: data.password,
+      birthday: data.birthday,
+    })
+      .then((response) => {
+        console.log('successfully saved userinfo');
+      })
+      .catch((error) => {
+        console.log('error in saving user info', error);
+      });
+  };
+
   return (
-    <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            {login ? null : (
-              <div>
-                <li>
-                  <Link to="login">Login</Link>
-                </li>
-                <li>
-                  <Link to="signup">Signup</Link>
-                </li>
-              </div>
-            )}
-          </ul>
-        </nav>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          {login ? null : (
-            <div>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-            </div>
-          )}
-        </Switch>
+        <Navigate login={login} />
+        <Routes login={login} saveUser={saveUser} />
       </div>
-    </Router>
   );
 };
 
