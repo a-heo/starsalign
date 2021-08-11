@@ -1,7 +1,9 @@
+const { Op } = require('sequelize');
 const Users = require('../model/user');
 
 module.exports = {
   create: (req, res) => {
+    console.log(req, 'create');
     Users.create(req.body)
       .then((result) => {
         res.status(200).send(result);

@@ -9,13 +9,8 @@ const App = () => {
   const [login, setLogin] = useState(false);
 
   const saveUser = (data) => {
-    axios.post('/user', {
-      firstName: data.firstName,
-      lastName: data.lastName,
-      userId: data.userId,
-      password: data.password,
-      birthday: data.birthday,
-    })
+    console.log(data, 'inside saveuser');
+    axios.post('/user', data)
       .then((response) => {
         console.log('successfully saved userinfo');
       })

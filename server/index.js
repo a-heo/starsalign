@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const userRouter = require('./routes/user');
+const db = require('./database/index');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use('/', express.static(PUBLIC_DIR));
 app.use('/user', userRouter);
 
 app.listen(port, () => {
+  db;
   console.log(`starsalign is listening at http://localhost:${port}`);
 });
 

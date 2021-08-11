@@ -10,7 +10,7 @@ const Users = require('../model/user');
 sequelize.authenticate()
   .then((result) => {
     console.log('mysql successfully connected');
-    return Users.sync({ alter: true });
+    return Users.sync();
   })
   .then((result) => {
     console.log('table created');
