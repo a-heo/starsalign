@@ -38,7 +38,6 @@ const Users = sequelize.define('User', {
   },
   horsescope: {
     type: DataTypes.CHAR,
-    allowNull: false,
   },
   lastlogin: {
     type: DataTypes.DATE,
