@@ -3,7 +3,7 @@ const Users = require('../model/user');
 
 module.exports = {
   create: (req, res) => {
-    console.log(req, 'create');
+    console.log(req.body, 'create');
     Users.create(req.body)
       .then((result) => {
         res.status(200).send(result);
