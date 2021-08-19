@@ -13,11 +13,6 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use('/', express.static(PUBLIC_DIR));
 
-//testing connection (this works)
-// app.post('/user', (req, res) => {
-//   console.log('inside index.js post req', req.body);
-// });
-
 app.use('/user', userRouter);
 
 app.listen(port, () => {
