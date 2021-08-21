@@ -12,11 +12,11 @@ const Users = sequelize.define('User', {
     primaryKey: true,
     autoIncrement: true,
   },
-  firstname: {
+  firstName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  lastname: {
+  lastName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -37,7 +37,7 @@ const Users = sequelize.define('User', {
     allowNull: false,
   },
   horsescope: {
-    type: DataTypes.CHAR,
+    type: DataTypes.STRING,
   },
   lastlogin: {
     type: DataTypes.DATE,
