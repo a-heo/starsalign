@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({ logUser }) => {
   const [userId, updateID] = useState('');
   const [password, updatePW] = useState('');
 
   const handleSubmit = () => {
-    console.log('submit Pressed');
+    const loginInfo = { userId, password };
+    logUser(loginInfo);
   };
 
   return (
