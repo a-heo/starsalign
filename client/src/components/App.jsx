@@ -21,8 +21,9 @@ const App = () => {
 
   const logUser = (loginInfo) => {
     console.log(loginInfo, 'inside log user');
-    axios.get('/user', data)
+    axios.post('/user/login', loginInfo)
       .then((response) => {
+        setLogin(true);
         alert("welcome");
         //transfer data to components
       })

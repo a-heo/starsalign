@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const Signup = ({ saveUser }) => {
   const [firstName, setFirst] = useState('');
@@ -90,6 +91,7 @@ const Signup = ({ saveUser }) => {
         <br />
         <input type="submit" value="submit" />
       </form>
+      {/* redirect path if login is true to homepage */}
     </div>
   );
 };

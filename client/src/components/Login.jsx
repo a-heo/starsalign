@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
-const Login = ({ logUser }) => {
+const Login = ({ logUser, login }) => {
   const [userId, updateID] = useState('');
   const [password, updatePW] = useState('');
 
@@ -24,6 +25,8 @@ const Login = ({ logUser }) => {
         </label>
         <input type="submit" value="submit" />
       </form>
+      {/* redirect path if login is true to homepage */}
+      {login ? <Redirect to="/" /> : null}
     </div>
   );
 };
