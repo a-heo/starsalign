@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+const Login = ({ logUser }) => {
   const [userId, updateID] = useState('');
   const [password, updatePW] = useState('');
 
   const handleSubmit = () => {
-    console.log('submit Pressed');
+    const loginInfo = { userId, password };
+    logUser(loginInfo);
   };
 
   return (
@@ -21,6 +22,7 @@ const Login = () => {
           Password:
           <input type="password" value={password} onChange={(e) => updatePW(e.target.value)} />
         </label>
+        <input type="submit" value="submit" />
       </form>
     </div>
   );

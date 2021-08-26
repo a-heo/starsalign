@@ -19,10 +19,23 @@ const App = () => {
       });
   };
 
+  const logUser = (loginInfo) => {
+    console.log(loginInfo, 'inside log user');
+    axios.get('/user', data)
+      .then((response) => {
+        alert("welcome");
+        //transfer data to components
+      })
+      .catch((error) => {
+        console.log('error logging user', error);
+        alert("User/Password is incorrect");
+      })
+  };
+
   return (
       <div>
         <Navigate login={login} />
-        <Routes login={login} saveUser={saveUser} />
+        <Routes login={login} saveUser={saveUser} logUser={logUser}/>
       </div>
   );
 };

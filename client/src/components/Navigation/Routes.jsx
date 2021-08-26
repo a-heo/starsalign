@@ -6,7 +6,7 @@ import About from '../About';
 import Login from '../Login';
 import Signup from '../Signup';
 
-const Routes = ({ saveUser, login }) => (
+const Routes = ({ saveUser, login, logUser }) => (
   <div>
     <Switch>
       <Route exact path="/">
@@ -18,7 +18,7 @@ const Routes = ({ saveUser, login }) => (
       {login ? null : (
         <div>
           <Route exact path="/login">
-            <Login />
+            <Login logUser={logUser} />
           </Route>
           <Route exact path="/signup">
             <Signup saveUser={saveUser} />
