@@ -15,13 +15,14 @@ const Routes = ({ saveUser, login, logUser }) => (
       <Route exact path="/about">
         <About />
       </Route>
-      {login ? null : (
+      {login ? 
+        null : (
         <div>
           <Route exact path="/login">
-            <Login logUser={logUser} />
+            <Login logUser={logUser} login={login} />
           </Route>
           <Route exact path="/signup">
-            <Signup saveUser={saveUser} />
+            <Signup saveUser={saveUser} login={login} />
           </Route>
         </div>
       )}

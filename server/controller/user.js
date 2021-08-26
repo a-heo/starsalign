@@ -13,6 +13,7 @@ module.exports = {
       });
   },
   get: (req, res) => {
+    console.log(req, 'get');
     Users.findOne({
       where: {
         userId: req.body.userId,
