@@ -22,6 +22,7 @@ const Login = ({ logUser }) => {
           Password:
           <input type="password" value={password} onChange={(e) => updatePW(e.target.value)} />
         </label>
+        <input type="submit" value="submit" />
       </form>
     </div>
   );

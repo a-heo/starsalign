@@ -20,6 +20,7 @@ module.exports = {
       },
     })
       .then((data) => {
+        console.log(data);
         res.send(data);
       })
       .catch((error) => {
