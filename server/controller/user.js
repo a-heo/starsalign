@@ -13,18 +13,18 @@ module.exports = {
       });
   },
   get: (req, res) => {
-    console.log(req, 'get');
     Users.findOne({
       where: {
         userId: req.body.userId,
         password: req.body.password,
       },
+      raw: true,
     })
       .then((data) => {
-        console.log(data);
-        res.send(data);
+        res.status(200).send(data);
       })
       .catch((error) => {
+        console.log('error retrieving user info', error);
         res.status(500).send(`error retrieving user ${error}`);
       });
   },

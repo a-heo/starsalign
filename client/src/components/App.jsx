@@ -7,6 +7,11 @@ const axios = require('axios');
 
 const App = () => {
   const [login, setLogin] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [name, setName] = useState({ firstName: '', lastName: '' });
+  const [sign, setSign] = useState('');
+  const [horscope, setHorscope] = useState('');
+  const [password, setPassword] = useState('');
 
   const saveUser = (data) => {
     console.log(data, 'inside saveuser');
@@ -23,14 +28,19 @@ const App = () => {
     console.log(loginInfo, 'inside log user');
     axios.post('/user/login', loginInfo)
       .then((response) => {
-        setLogin(true);
+        setUserInfo(response.data);
+        console.log(userInfo, 'userinfo updated in states from logUser', response);
         alert("welcome");
         //transfer data to components
+        setLogin(!login);
+      })
+      .then(() => {
+        console.log(login, 'after userinfo saved');
       })
       .catch((error) => {
         console.log('error logging user', error);
         alert("User/Password is incorrect");
-      })
+      });
   };
 
   return (

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 const Login = ({ logUser, login }) => {
   const [userId, updateID] = useState('');
   const [password, updatePW] = useState('');
+
+  useEffect(() => {
+    console.log('login worked');
+  }, [login]);
 
   const handleSubmit = () => {
     const loginInfo = { userId, password };
@@ -25,8 +29,9 @@ const Login = ({ logUser, login }) => {
         </label>
         <input type="submit" value="submit" />
       </form>
+      { login ? <Redirect to="/" />
+        : null}
       {/* redirect path if login is true to homepage */}
-      {login ? <Redirect to="/" /> : null}
     </div>
   );
 };
