@@ -6,26 +6,23 @@ import About from '../About';
 import Login from '../Login';
 import Signup from '../Signup';
 
-const Routes = ({ saveUser, login, logUser }) => (
+const Routes = ({
+  saveUser, login, logUser, setLogin,
+}) => (
   <div>
     <Switch>
-      <Route exact path="/">
-        <Home />
+      <Route exact path="/" component={Home}>
+        {/* <Home /> */}
       </Route>
-      <Route exact path="/about">
-        <About />
+      <Route exact path="/about" component={About}>
+        {/* <About /> */}
       </Route>
-      {login ? 
-        null : (
-        <div>
-          <Route exact path="/login">
-            <Login logUser={logUser} login={login} />
-          </Route>
-          <Route exact path="/signup">
-            <Signup saveUser={saveUser} login={login} />
-          </Route>
-        </div>
-      )}
+      <Route exact path="/login" component={Login}>
+        {/* <Login logUser={logUser} login={login} setLogin={setLogin} /> */}
+      </Route>
+      <Route exact path="/signup" component={Signup}>
+        {/* <Signup saveUser={saveUser} login={login} setLogin={setLogin} /> */}
+      </Route>
     </Switch>
   </div>
 );
