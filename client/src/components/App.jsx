@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Routes from './Navigation/Routes';
 import Navigate from './Navigation/Navigate';
 
-const axios = require('axios');
-
 const App = () => {
   const [login, setLogin] = useState(false);
 
