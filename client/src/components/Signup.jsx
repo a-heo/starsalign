@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-const Signup = ({ saveUser }) => {
+const axios = require('axios');
+
+const Signup = ({ login, setLogin }) => {
   const [firstName, setFirst] = useState('');
   const [lastName, setLast] = useState('');
   const [userId, setUserId] = useState('');
@@ -9,7 +11,7 @@ const Signup = ({ saveUser }) => {
   const [birthday, setBirthday] = useState('');
 
   const findSign = (birthdate) => {
-    const date = birthdate.slice(5, 6) + birthdate.slice(8, 9);
+    const date = birthdate.slice(5, 7) + birthdate.slice(8, 10);
     if (date > 320 && date < 421) {
       return 'Aries';
     }
@@ -46,6 +48,18 @@ const Signup = ({ saveUser }) => {
     if (date > 219 && date < 319) {
       return 'Pisces';
     }
+  };
+
+  const saveUser = (data) => {
+    console.log(data, 'inside saveuser');
+    axios.post('/user', data)
+      .then((response) => {
+        console.log('successfully saved userinfo');
+
+      })
+      .catch((error) => {
+        console.log('error in saving user info', error);
+      });
   };
 
   const handleSubmit = (e) => {
