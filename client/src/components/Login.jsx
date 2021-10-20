@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -46,6 +46,7 @@ const Login = ({ login, setLogin }) => {
           <input type="password" value={password} onChange={(e) => updatePW(e.target.value)} />
         </label>
         <input type="submit" value="submit" />
+        {/* redirect path if login is true to homepage */}
         { loggedIn ? (
           <Redirect
             from="/login"
@@ -59,7 +60,6 @@ const Login = ({ login, setLogin }) => {
         )
           : null}
       </form>
-      {/* redirect path if login is true to homepage */}
     </div>
   );
 };

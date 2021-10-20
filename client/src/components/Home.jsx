@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Home = () => {
+const Home = ({ userId, name, sign, horscope }) => {
+    console.log(name, userId, sign, horscope, 'inside home after login');
     return (
-        <h1>Stars Align</h1>
+        <h1>Stars Align {name ? name : null}</h1>
     );
 };
 

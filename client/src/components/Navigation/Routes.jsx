@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from '../Home';
 import About from '../About';
@@ -9,7 +9,7 @@ import Signup from '../Signup';
 const Routes = ({
   login, setLogin,
 }) => (
-  <div>
+  <Router>
     <Switch>
       <Route exact path="/" component={Home}>
         {/* <Home /> */}
@@ -24,7 +24,7 @@ const Routes = ({
         <Signup login={login} setLogin={setLogin} />
       </Route>
     </Switch>
-  </div>
+  </Router>
 );
 
 export default Routes;
