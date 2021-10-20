@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter as Router } from 'react-router-dom';
 
 const Navigate = ({ login }) => (
-  <div>
+  <Router>
     <nav>
       <ul>
         <li>
@@ -23,7 +23,7 @@ const Navigate = ({ login }) => (
         )}
       </ul>
     </nav>
-  </div>
+  </Router>
 );
 
 export default Navigate;
