@@ -2,13 +2,13 @@ const router = require('express').Router();
 
 const userController = require('./controller/user');
 
-// finding issue connecting frontend to backend post.
-// need to do**
 router.use((req, res, next) => {
   console.log('Time: ', Date.now()),
   next();
 });
-router.post('/login', userController.get);
+router.get('/info', userController.get);
+router.post('/login', userController.check);
 router.post('/', userController.create);
+//create get router by id and create controller for this
 
 module.exports = router;

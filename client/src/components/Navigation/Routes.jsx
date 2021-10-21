@@ -9,7 +9,7 @@ import Signup from '../Signup';
 const Routes = ({
   login, setLogin,
 }) => (
-  <Router>
+  <div>
     <Switch>
       <Route exact path="/" component={Home}>
         {/* <Home /> */}
@@ -24,7 +24,7 @@ const Routes = ({
         <Signup login={login} setLogin={setLogin} />
       </Route>
     </Switch>
-  </Router>
+  </div>
 );
 
 export default Routes;

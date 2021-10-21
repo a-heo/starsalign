@@ -51,11 +51,10 @@ const Signup = ({ login, setLogin }) => {
   };
 
   const saveUser = (data) => {
-    console.log(data, 'inside saveuser');
     axios.post('/user', data)
       .then((response) => {
         console.log('successfully saved userinfo');
-
+        //redirect to homepage with new info
       })
       .catch((error) => {
         console.log('error in saving user info', error);

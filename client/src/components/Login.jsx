@@ -8,6 +8,7 @@ const Login = ({ login, setLogin }) => {
   const [password, updatePW] = useState('');
   const [name, setName] = useState({ firstName: '', lastName: '' });
   const [sign, setSign] = useState('');
+  const [id, getId] = useState('');
   const [horscope, setHorscope] = useState('');
   const [lastlogin, setLastlogin] = useState('');
   const [loggedIn, setLoggedin] = useState(false);
@@ -15,8 +16,10 @@ const Login = ({ login, setLogin }) => {
   const logUser = (loginInfo) => {
     axios.post('/user/login', loginInfo)
       .then((response) => {
+        console.log(response.data, 'inside post for login');
         setName({ firstName: response.data.firstName, lastName: response.data.lastName });
         setSign(response.data.sign);
+        getId(response.data.id);
         setHorscope(response.data.horscope);
         setLoggedin(true);
         setLogin(true);
@@ -52,9 +55,8 @@ const Login = ({ login, setLogin }) => {
             from="/login"
             to={{
               pathname: '/',
-              state: {
-                userId, name, sign, horscope,
-              },
+              query:
+                id, login
             }}
           />
         )

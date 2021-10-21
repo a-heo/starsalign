@@ -1,10 +1,27 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-const Home = ({ userId, name, sign, horscope }) => {
-    console.log(name, userId, sign, horscope, 'inside home after login');
-    return (
-        <h1>Stars Align {name ? name : null}</h1>
-    );
+const Home = (data) => {
+  const [id, setId] = useState('');
+
+  console.log(data);
+  useEffect(() => {
+    setId(data.location.query);
+    axios.get('/user/info', id)
+      .then((response) => {
+        console.log(response, 'info retrieved');
+      })
+      .catch(error => {
+        console.log(error, 'error from home retrieving userinfo');
+      });
+  });
+
+  return (
+    <h1>
+      Stars Align
+      {name || null}
+    </h1>
+  );
 };
 
 export default Home;

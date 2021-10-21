@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 
 const Navigate = ({ login }) => (
-  <Router>
+  <div>
     <nav>
       <ul>
         <li>
@@ -23,7 +23,7 @@ const Navigate = ({ login }) => (
         )}
       </ul>
     </nav>
-  </Router>
+  </div>
 );
 
 export default Navigate;

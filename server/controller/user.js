@@ -12,7 +12,7 @@ module.exports = {
         res.status(500).send(error);
       });
   },
-  get: (req, res) => {
+  check: (req, res) => {
     Users.findOne({
       where: {
         userId: req.body.userId,
@@ -28,7 +28,20 @@ module.exports = {
         res.status(500).send(`error retrieving user ${error}`);
       });
   },
-
+  get: (req, res) => {
+    Users.findOne({
+      where: {
+        id: req.body.id,
+      },
+      raw: true,
+    })
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((error) => {
+        res.status(500).send(`error getting user info ${error}`);
+      })
+  }
 };
 
 //need one for udpating user info
