@@ -16,9 +16,10 @@ const Login = ({ login, setLogin }) => {
   const logUser = (loginInfo) => {
     axios.post('/user/login', loginInfo)
       .then((response) => {
+        console.log(login, 'post loguser');
         console.log(response.data, 'inside post for login');
         setName({ firstName: response.data.firstName, lastName: response.data.lastName });
-        setSign(response.data.sign);
+        // setSign(response.data.sign);
         getId(response.data.id);
         setHorscope(response.data.horscope);
         setLoggedin(true);
@@ -26,9 +27,11 @@ const Login = ({ login, setLogin }) => {
         alert('welcome');
       })
       .catch((error) => {
+        console.log(error, 'error in login');
         alert('User/Password is incorrect');
       });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const loginInfo = { userId, password };
@@ -56,7 +59,7 @@ const Login = ({ login, setLogin }) => {
             to={{
               pathname: '/',
               query:
-                id, login
+                id, userId, name, horscope, login
             }}
           />
         )

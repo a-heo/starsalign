@@ -21,6 +21,7 @@ module.exports = {
       raw: true,
     })
       .then((data) => {
+        console.log(data, 'login data via che2ck');
         res.status(200).send(data);
       })
       .catch((error) => {
@@ -29,9 +30,10 @@ module.exports = {
       });
   },
   get: (req, res) => {
+    console.log(req.body, 'inside get req');
     Users.findOne({
       where: {
-        id: req.body.id,
+        userId: req.body.userId,
       },
       raw: true,
     })
@@ -40,8 +42,8 @@ module.exports = {
       })
       .catch((error) => {
         res.status(500).send(`error getting user info ${error}`);
-      })
-  }
+      });
+  },
 };
 
-//need one for udpating user info
+// need one for udpating user info
