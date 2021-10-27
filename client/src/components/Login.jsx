@@ -16,14 +16,13 @@ const Login = ({ login, setLogin }) => {
   const logUser = (loginInfo) => {
     axios.post('/user/login', loginInfo)
       .then((response) => {
-        console.log(login, 'post loguser');
-        console.log(response.data, 'inside post for login');
-        setName({ firstName: response.data.firstName, lastName: response.data.lastName });
-        // setSign(response.data.sign);
-        getId(response.data.id);
-        setHorscope(response.data.horscope);
+        const { data } = response;
+        setName({ firstName: data.firstName, lastName: data.lastName });
+        // setSign(data.sign);
+        getId(data.id);
+        setHorscope(data.horscope);
         setLoggedin(true);
-        setLogin(true);
+        setLogin(!login);
         alert('welcome');
       })
       .catch((error) => {
