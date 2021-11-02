@@ -2,33 +2,63 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const Home = (data) => {
+  const { location } = data;
   const [id, setId] = useState('');
+  const [color, setColor] = useState('');
+  const [compatibility, setCompatibility] = useState('');
+  const [description, setDescription] = useState('');
+  const [number, setNumber] = useState();
+  const [mood, setMood] = useState('');
 
-  // figure out how to call in props pre redirect after login
-  console.log(id, 'id', data.location, data.location.name, 'data inside home');
-
+  console.log(location, 'location', id, 'id', 'data inside home after login');
   // causes login to fail no matter what...why?
   useEffect(() => {
-    setId(data.location.userId);
-    // setId(data.location.query);
-    // axios.get('/user/info', data.location.userId)
-    //   .then((response) => {
-    //     console.log(response, 'info retrieved');
-    //   })
-    //   .catch(error => {
-    //     console.log(error, 'error from home retrieving userinfo');
-    //   });
-  }, [data.location.userId, setId]);
+    if (location.userId) {
+      setId(location.userId);
+      axios.post(`https://aztro.sameerkumar.website?sign=${location.sign}&day=today`)
+        .then((response) => {
+          const { data } = response;
+          console.log(data, 'request horscope info from aztro');
+          setNumber(data.lucky_number);
+          setColor(data.color);
+          setDescription(data.description);
+          setCompatibility(data.compatibility);
+          setMood(data.mood);
+        })
+        .catch((error) => {
+          console.log(error, 'error retrieving horscope from aztro');
+        });
+    }
+  }, [location.userId]);
 
+  // h1 isn't correctly showing up
   return (
-    <div>
+    <>
       <h1>
         Stars Align
       </h1>
-      <h2>
-        {data.location.name ? `Welcome ${data.location.name.firstName} ${data.location.name.lastName}!!` : null}
-      </h2>
-    </div>
+      {location.name
+        ? (
+          <div>
+            <h2>
+              Welcome
+              {' '}
+              {location.name.firstName}
+              {' '}
+              {location.name.lastName}
+              !!
+            </h2>
+            <p>
+              <b>
+                Horscope of the day:
+              </b>
+              <br />
+              {description}
+            </p>
+          </div>
+        )
+        : null}
+    </>
   );
 };
 

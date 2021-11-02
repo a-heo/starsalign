@@ -11,7 +11,18 @@ const Navigate = ({ login }) => (
         <li>
           <Link to="/about">About</Link>
         </li>
-        {login ? null : (
+        {login 
+        ? 
+        (
+          <div>
+            <li>
+              <button>
+              Logout
+              </button>
+            </li>
+          </div>
+        ) 
+        : (
           <div>
             <li>
               <Link to="login">Login</Link>
