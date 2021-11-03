@@ -11,35 +11,34 @@ const Navigate = ({ login }) => (
         <li>
           <Link to="/about">About</Link>
         </li>
-        {login 
-        ? 
-        (
-          <div>
-            <li>
-              <Link to="/info">Info</Link>
-            </li>
-            <li>
-              <button>
-              Logout
-              </button>
-            </li>
-          </div>
-        ) 
-        : (
-          <div>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-          </div>
-        )}
+        {login
+          ? (
+            <div>
+              <li>
+                <Link to="/info">Info</Link>
+              </li>
+              <li>
+                <button type="submit">
+                  Logout
+                </button>
+              </li>
+            </div>
+          )
+          : (
+            <div>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+            </div>
+          )}
       </ul>
     </nav>
     <h1>
-        Stars Align
-      </h1>
+      Stars Align
+    </h1>
   </div>
 );
 

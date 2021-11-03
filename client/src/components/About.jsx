@@ -1,9 +1,7 @@
 import React from 'react';
 
-const About = () => {
-    return (
-        <div>about section</div>
-    );
-}
+const About = () => (
+  <div>What is Stars Align?</div>
+);
 
 export default About;
