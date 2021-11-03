@@ -1,11 +1,12 @@
-const { Op } = require('sequelize');
-const Users = require('../model/user');
+const db = require('../database/index');
+// const Users = require('../model/user');
 
 module.exports = {
   create: (req, res) => {
     console.log(req.body, 'create');
-    Users.create(req.body)
+    db.User.create(req.body)
       .then((result) => {
+        console.log('success creating account', result);
         res.status(200).send(result);
       })
       .catch((error) => {
@@ -13,7 +14,7 @@ module.exports = {
       });
   },
   check: (req, res) => {
-    Users.findOne({
+    db.User.findOne({
       where: {
         userId: req.body.userId,
         password: req.body.password,
@@ -31,7 +32,7 @@ module.exports = {
   },
   get: (req, res) => {
     console.log(req.body, 'inside get req');
-    Users.findOne({
+    db.User.findOne({
       where: {
         userId: req.body.userId,
       },

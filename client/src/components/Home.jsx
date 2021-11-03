@@ -33,8 +33,6 @@ const Home = (data) => {
 
   return (
     <>
-      {location.name
-        ? (
           <div>
             <h2>
               Welcome
@@ -73,8 +71,6 @@ const Home = (data) => {
               {color}
             </p>
           </div>
-        )
-        : null}
     </>
   );
 };

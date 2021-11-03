@@ -20,18 +20,9 @@ Journal.belongsTo(User, {
   targetKey: 'userId',
 });
 
-sequelize.authenticate()
-  .then(result => {
-    console.log('mysql successfully connected');
-    return User.sync({ force: true });
-  })
-  .then(result => Journal.sync({ force: true }))
-  .then((result) => {
-    console.log('table created');
-    return result;
-  })
-  .catch((error) => {
-    console.log('could not connect to mysql', error);
-  });
+// sequelize.sync({ force: true })
+//   .then(() => {
+//     console.log(`Database & tables created!`)
+//   });
 
-module.exports = { sequelize, User, Journal };
+module.exports = { User, Journal };
