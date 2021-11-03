@@ -5,13 +5,15 @@ import Home from '../Home';
 import About from '../About';
 import Login from '../Login';
 import Signup from '../Signup';
+import Main from '../Main';
 
 const Routes = ({
   login, setLogin,
 }) => (
   <div>
     <Switch>
-      <Route exact path="/" component={Home}>
+      <Route exact path="/" component={Main} />
+      <Route exact path="/info" component={Home}>
         {/* <Home /> */}
       </Route>
       <Route exact path="/about" component={About}>

@@ -57,7 +57,7 @@ const Login = ({ login, setLogin }) => {
           <Redirect
             from="/login"
             to={{
-              pathname: '/',
+              pathname: '/info',
               query:
                 id, userId, name, sign, login
             }}

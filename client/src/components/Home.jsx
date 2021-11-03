@@ -31,12 +31,8 @@ const Home = (data) => {
     }
   }, [location.userId]);
 
-  // h1 isn't correctly showing up
   return (
     <>
-      <h1>
-        Stars Align
-      </h1>
       {location.name
         ? (
           <div>
@@ -54,6 +50,27 @@ const Home = (data) => {
               </b>
               <br />
               {description}
+            </p>
+            <p>
+              <b>
+                Compatibility:
+              </b>
+              <br />
+              {compatibility}
+            </p>
+            <p>
+              <b>
+                Mood:
+              </b>
+              <br />
+              {mood}
+            </p>
+            <p>
+              <b>
+                Color:
+              </b>
+              <br />
+              {color}
             </p>
           </div>
         )

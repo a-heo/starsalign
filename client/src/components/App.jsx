@@ -8,10 +8,12 @@ const App = () => {
   const [login, setLogin] = useState(false);
 
   return (
-    <Router>
-      <Navigate login={login} />
-      <Routes login={login} setLogin={setLogin} />
-    </Router>
+    <>
+      <Router>
+        <Navigate login={login} />
+        <Routes login={login} setLogin={setLogin} />
+      </Router>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ const Navigate = ({ login }) => (
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Main</Link>
         </li>
         <li>
           <Link to="/about">About</Link>
@@ -15,6 +15,9 @@ const Navigate = ({ login }) => (
         ? 
         (
           <div>
+            <li>
+              <Link to="/info">Info</Link>
+            </li>
             <li>
               <button>
               Logout
@@ -25,15 +28,18 @@ const Navigate = ({ login }) => (
         : (
           <div>
             <li>
-              <Link to="login">Login</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="signup">Signup</Link>
+              <Link to="/signup">Signup</Link>
             </li>
           </div>
         )}
       </ul>
     </nav>
+    <h1>
+        Stars Align
+      </h1>
   </div>
 );
 
