@@ -9,22 +9,23 @@ const sequelize = new Sequelize('starsalign', login.user, login.password, {
 });
 
 const User = UserModel(sequelize, DataTypes);
-const Journal = JournalModel(sequelize, DataTypes);
+const Journal = JournalModel(sequelize, DataTypes, User);
 
 User.hasMany(Journal, {
   foreignKey: 'userCode',
-  sourceKey: 'userId'
+  sourceKey: 'userId',
 });
 Journal.belongsTo(User, {
   foreignKey: 'userCode',
-  targetKey: 'userId'
+  targetKey: 'userId',
 });
 
 sequelize.authenticate()
-  .then((result) => {
+  .then(result => {
     console.log('mysql successfully connected');
-    return Users.sync({ force: true });
+    return User.sync({ force: true });
   })
+  .then(result => Journal.sync({ force: true }))
   .then((result) => {
     console.log('table created');
     return result;
@@ -33,4 +34,4 @@ sequelize.authenticate()
     console.log('could not connect to mysql', error);
   });
 
-module.exports = sequelize;
+module.exports = { sequelize, User, Journal };

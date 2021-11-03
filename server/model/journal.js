@@ -1,18 +1,20 @@
-module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('journal', {
-        id: {
-            type: DataTypes.INTEGER, 
-            primaryKey: true,
-            autoIncrement: true,
-        }, 
-        userCode: {
-            type: DataTypes.STRING
-        },
-        text: {
-            type: DataTypes.TEXT('long')
-        },
-        date: {
-            type: DataTypes.DATE
-        },
-    })
-}
+module.exports = (sequelize, DataTypes, User) => sequelize.define('Journal', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  userCode: {
+    type: DataTypes.CHAR,
+    references: {
+      model: User,
+      key: 'userId',
+    },
+  },
+  text: {
+    type: DataTypes.TEXT('long'),
+  },
+  date: {
+    type: DataTypes.DATE,
+  },
+});
