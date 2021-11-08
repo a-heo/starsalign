@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 
+import { UserContext } from './Context/UserContext';
+
 const axios = require("axios");
+
 
 const Login = ({ login, setLogin }) => {
   const [userId, updateID] = useState("");
@@ -11,7 +14,9 @@ const Login = ({ login, setLogin }) => {
   // const [id, getId] = useState("");
   // // const [horscope, setHorscope] = useState('');
   // const [lastlogin, setLastlogin] = useState("");
-  // const [loggedIn, setLoggedin] = useState(false);
+  const [loggedIn, setLoggedin] = useState(false);
+
+  const { user, setUser} = useContext(UserContext);
 
   const logUser = (loginInfo) => {
     axios
@@ -19,12 +24,13 @@ const Login = ({ login, setLogin }) => {
       .then((response) => {
         const { data } = response;
         console.log(data, "axios request for user info inside login");
-        setName({ firstName: data.firstName, lastName: data.lastName });
-        setSign(data.sign);
-        getId(data.id);
-        // setHorscope(data.horscope);
+        // setName({ firstName: data.firstName, lastName: data.lastName });
+        // setSign(data.sign);
+        // getId(data.id);
+        // // setHorscope(data.horscope);
         setLoggedin(true);
-        setLogin(!login);
+        // setLogin(!login);
+        setUser(data);
         alert("welcome");
       })
       .catch((error) => {
@@ -67,11 +73,6 @@ const Login = ({ login, setLogin }) => {
             from="/login"
             to={{
               pathname: "/info",
-              query: id,
-              userId,
-              name,
-              sign,
-              login,
             }}
           />
         ) : null}
