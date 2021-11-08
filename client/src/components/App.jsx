@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Routes from './Navigation/Routes';
 import Navigate from './Navigation/Navigate';
-import UserContext from './Context/UserContext';
+import { UserContext } from './Context/UserContext';
 
 const App = () => {
   const [login, setLogin] = useState(false);
@@ -14,10 +14,10 @@ const App = () => {
   return (
     <>
       <Router>
-        <UserContext userInfo={userInfo}>
+        <UserContext.Provider value={userInfo}>
           <Navigate login={login} />
           <Routes login={login} setLogin={setLogin} />
-        </UserContext>
+        </UserContext.Provider>
       </Router>
     </>
   );
