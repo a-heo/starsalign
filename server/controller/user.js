@@ -1,11 +1,12 @@
-const { Op } = require('sequelize');
-const Users = require('../model/user');
+const db = require("../database/index");
+// const Users = require('../model/user');
 
 module.exports = {
   create: (req, res) => {
-    console.log(req.body, 'create');
-    Users.create(req.body)
+    console.log(req.body, "create");
+    db.User.create(req.body)
       .then((result) => {
+        console.log("success creating account", result);
         res.status(200).send(result);
       })
       .catch((error) => {
@@ -13,7 +14,7 @@ module.exports = {
       });
   },
   check: (req, res) => {
-    Users.findOne({
+    db.User.findOne({
       where: {
         userId: req.body.userId,
         password: req.body.password,
@@ -21,17 +22,17 @@ module.exports = {
       raw: true,
     })
       .then((data) => {
-        console.log(data, 'login data via che2ck');
+        console.log(data, "login data via che2ck");
         res.status(200).send(data);
       })
       .catch((error) => {
-        console.log('error retrieving user info', error);
+        console.log("error retrieving user info", error);
         res.status(500).send(`error retrieving user ${error}`);
       });
   },
   get: (req, res) => {
-    console.log(req.body, 'inside get req');
-    Users.findOne({
+    console.log(req.body, "inside get req");
+    db.User.findOne({
       where: {
         userId: req.body.userId,
       },

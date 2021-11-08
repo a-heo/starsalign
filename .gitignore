@@ -2,3 +2,5 @@ node_modules
 
 client/dist/bundle.js
 server/database/login.js
+server/database/check.js
+

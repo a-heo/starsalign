@@ -1,15 +1,13 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Home from '../Home';
-import About from '../About';
-import Login from '../Login';
-import Signup from '../Signup';
-import Main from '../Main';
+import Home from "../Home";
+import About from "../About";
+import Login from "../Login";
+import Signup from "../Signup";
+import Main from "../Main";
 
-const Routes = ({
-  login, setLogin,
-}) => (
+const Routes = ({ login, setLogin }) => (
   <div>
     <Switch>
       <Route exact path="/" component={Main} />

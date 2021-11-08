@@ -1,63 +1,65 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
-const axios = require('axios');
+const axios = require("axios");
 
 const Signup = ({ login, setLogin }) => {
-  const [firstName, setFirst] = useState('');
-  const [lastName, setLast] = useState('');
-  const [userId, setUserId] = useState('');
-  const [password, setPassword] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const [firstName, setFirst] = useState("");
+  const [lastName, setLast] = useState("");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthday, setBirthday] = useState("");
 
+  //use switch statement for this function and function withinRange
   const findSign = (birthdate) => {
     const date = birthdate.slice(5, 7) + birthdate.slice(8, 10);
     if (date > 320 && date < 421) {
-      return 'Aries';
+      return "Aries";
     }
     if (date > 420 && date < 521) {
-      return 'Taurus';
+      return "Taurus";
     }
     if (date > 520 && date < 622) {
-      return 'Gemini';
+      return "Gemini";
     }
     if (date > 621 && date < 723) {
-      return 'Cancer';
+      return "Cancer";
     }
     if (date > 722 && date < 823) {
-      return 'Leo';
+      return "Leo";
     }
     if (date > 822 && date < 923) {
-      return 'Virgo';
+      return "Virgo";
     }
     if (date > 922 && date < 1023) {
-      return 'Libra';
+      return "Libra";
     }
     if (date > 1022 && date < 1123) {
-      return 'Scorpio';
+      return "Scorpio";
     }
     if (date > 1122 && date < 1222) {
-      return 'Saggitarius';
+      return "Saggitarius";
     }
     if (date > 1221 || date < 121) {
-      return 'Capricorn';
+      return "Capricorn";
     }
     if (date > 120 && date < 219) {
-      return 'Aquarius';
+      return "Aquarius";
     }
     if (date > 219 && date < 319) {
-      return 'Pisces';
+      return "Pisces";
     }
   };
 
   const saveUser = (data) => {
-    axios.post('/user', data)
+    axios
+      .post("/user", data)
       .then((response) => {
-        console.log('successfully saved userinfo');
+        console.log("successfully saved userinfo");
         //redirect to homepage with new info
       })
       .catch((error) => {
-        console.log('error in saving user info', error);
+        console.log("error in saving user info", error);
       });
   };
 
@@ -81,26 +83,47 @@ const Signup = ({ login, setLogin }) => {
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
-          <input type="text" id="firstname" value={firstName} onChange={(e) => setFirst(e.target.value)} />
+          <input
+            type="text"
+            id="firstname"
+            value={firstName}
+            onChange={(e) => setFirst(e.target.value)}
+          />
         </label>
         <br />
         <label>
           Last Name:
-          <input type="text" value={lastName} onChange={(e) => setLast(e.target.value)} />
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLast(e.target.value)}
+          />
         </label>
         <br />
         <label>
           User Id:
-          <input type="text" value={userId} onChange={(e) => setUserId(e.target.value)} />
+          <input
+            type="text"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+          />
         </label>
         <br />
         <label>
           Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
         <br />
         <label>Birthday:</label>
-        <input type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)} />
+        <input
+          type="date"
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+        />
         <br />
         <input type="submit" value="submit" />
       </form>
