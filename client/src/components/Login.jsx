@@ -5,18 +5,12 @@ import { UserContext } from './Context/UserContext';
 
 const axios = require("axios");
 
-
 const Login = ({ login, setLogin }) => {
   const [userId, updateID] = useState("");
   const [password, updatePW] = useState("");
-  // const [name, setName] = useState({ firstName: "", lastName: "" });
-  // const [sign, setSign] = useState("");
-  // const [id, getId] = useState("");
-  // // const [horscope, setHorscope] = useState('');
-  // const [lastlogin, setLastlogin] = useState("");
   const [loggedIn, setLoggedin] = useState(false);
 
-  const { user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const logUser = (loginInfo) => {
     axios
@@ -24,13 +18,12 @@ const Login = ({ login, setLogin }) => {
       .then((response) => {
         const { data } = response;
         console.log(data, "axios request for user info inside login");
-        // setName({ firstName: data.firstName, lastName: data.lastName });
-        // setSign(data.sign);
-        // getId(data.id);
-        // // setHorscope(data.horscope);
         setLoggedin(true);
-        // setLogin(!login);
+        setLogin(!login);
         setUser(data);
+        console.log(user, 'inside login');
+      })
+      .then(() => {
         alert("welcome");
       })
       .catch((error) => {

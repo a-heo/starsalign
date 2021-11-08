@@ -10,7 +10,7 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   const userInfo = useMemo(() => ({ user, setUser }), [user, setUser])
-  
+
   return (
     <>
       <Router>
