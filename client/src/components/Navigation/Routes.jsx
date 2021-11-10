@@ -1,11 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Home from "../Home";
-import About from "../About";
-import Login from "../Login";
-import Signup from "../Signup";
-import Main from "../Main";
+import Home from '../Home';
+import About from '../About';
+import Login from '../Login';
+import Signup from '../Signup';
+import Main from '../Main';
+import Journal from '../Journal';
 
 const Routes = ({ login, setLogin }) => (
   <div>
@@ -17,6 +18,7 @@ const Routes = ({ login, setLogin }) => (
       <Route exact path="/about" component={About}>
         {/* <About /> */}
       </Route>
+      <Route exact path="/journal" component={Journal} />
       <Route exact path="/login">
         <Login login={login} setLogin={setLogin} />
       </Route>

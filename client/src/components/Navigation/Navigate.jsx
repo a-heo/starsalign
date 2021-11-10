@@ -17,6 +17,9 @@ const Navigate = ({ login }) => (
               <Link to="/info">My Info</Link>
             </li>
             <li>
+              <Link to="/journal">My Journal</Link>
+            </li>
+            <li>
               <button type="submit">Logout</button>
             </li>
           </div>

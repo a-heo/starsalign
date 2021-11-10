@@ -4,15 +4,7 @@ import React, { useEffect, useContext } from 'react';
 import { UserContext } from './Context/UserContext';
 
 const Home = () => {
-  const { user } = useContext(UserContext);
-  // const { location } = data;
-  // const [id, setId] = useState("");
-  // const [color, setColor] = useState("");
-  // const [compatibility, setCompatibility] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [number, setNumber] = useState();
-  // const [mood, setMood] = useState("");
-  // const [name, setName] = useState({ firstname: "", lastname: "" });
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -21,21 +13,22 @@ const Home = () => {
       )
       .then((response) => {
         const { data } = response;
-        console.log(data, 'request horscope info from aztro');
-        setNumber(data.lucky_number);
-        setColor(data.color);
-        setDescription(data.description);
-        setCompatibility(data.compatibility);
-        setMood(data.mood);
-        setName({
-          firstname: location.name.firstName,
-          lastname: location.name.lastName,
-        });
+        setUser((info) => ({
+          ...info,
+          horoscope: {
+            color: data.color,
+            compatibility: data.compatibility,
+            description: data.description,
+            luckyNum: data.lucky_num,
+            luckyTime: data.lucky_time,
+            mood: data.mood,
+          },
+        }));
       })
       .catch((error) => {
         console.log(error, 'error retrieving horscope from aztro');
       });
-  }, [user]);
+  }, []);
 
   return (
     <>
@@ -55,22 +48,22 @@ const Home = () => {
             <p>
               <b>Horoscope of the day:</b>
               <br />
-              {/* {description} */}
+              {user.horoscope ? user.horoscope.description : null}
             </p>
             <p>
               <b>Compatibility:</b>
               <br />
-              {/* {compatibility} */}
+              {user.horoscope ? user.horoscope.compatibility : null}
             </p>
             <p>
               <b>Mood:</b>
               <br />
-              {/* {mood} */}
+              {user.horoscope ? user.horoscope.mood : null}
             </p>
             <p>
               <b>Color:</b>
               <br />
-              {/* {color} */}
+              {user.horoscope ? user.horoscope.color : null}
             </p>
           </>
         )

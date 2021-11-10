@@ -10,7 +10,7 @@ const Login = ({ login, setLogin }) => {
   const [password, updatePW] = useState("");
   const [loggedIn, setLoggedin] = useState(false);
 
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const logUser = (loginInfo) => {
     axios
@@ -19,7 +19,6 @@ const Login = ({ login, setLogin }) => {
         const { data } = response;
         setLogin(!login);
         setUser(data);
-        console.log(user, 'inside login');
       })
       .then(() => {
         setLoggedin(true);
