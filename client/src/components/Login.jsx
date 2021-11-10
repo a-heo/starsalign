@@ -17,13 +17,12 @@ const Login = ({ login, setLogin }) => {
       .post("/user/login", loginInfo)
       .then((response) => {
         const { data } = response;
-        console.log(data, "axios request for user info inside login");
-        setLoggedin(true);
         setLogin(!login);
         setUser(data);
         console.log(user, 'inside login');
       })
       .then(() => {
+        setLoggedin(true);
         alert("welcome");
       })
       .catch((error) => {
