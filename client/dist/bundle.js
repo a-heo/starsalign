@@ -382,6 +382,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./client/src/components/Entries.jsx":
+/*!*******************************************!*\
+  !*** ./client/src/components/Entries.jsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar Entries = function Entries() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"entry\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Entries);\n\n//# sourceURL=webpack://starsalign/./client/src/components/Entries.jsx?");
+
+/***/ }),
+
 /***/ "./client/src/components/Home.jsx":
 /*!****************************************!*\
   !*** ./client/src/components/Home.jsx ***!
@@ -400,7 +411,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Context_UserContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Context/UserContext */ \"./client/src/components/Context/UserContext.jsx\");\n\n\n\nvar Journal = function Journal() {\n  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_1__.UserContext),\n      user = _useContext.user,\n      setUser = _useContext.setUser;\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"journal entries\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Journal);\n\n//# sourceURL=webpack://starsalign/./client/src/components/Journal.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _JournalForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JournalForm */ \"./client/src/components/JournalForm.jsx\");\n/* harmony import */ var _Entries__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Entries */ \"./client/src/components/Entries.jsx\");\n/* harmony import */ var _Context_UserContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Context/UserContext */ \"./client/src/components/Context/UserContext.jsx\");\n\n\n\n\n\nvar Journal = function Journal() {\n  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_Context_UserContext__WEBPACK_IMPORTED_MODULE_3__.UserContext),\n      user = _useContext.user,\n      setUser = _useContext.setUser;\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_JournalForm__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Entries__WEBPACK_IMPORTED_MODULE_2__.default, null));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Journal);\n\n//# sourceURL=webpack://starsalign/./client/src/components/Journal.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/JournalForm.jsx":
+/*!***********************************************!*\
+  !*** ./client/src/components/JournalForm.jsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar JournalForm = function JournalForm() {\n  var handleSubmit = function handleSubmit(e) {\n    console.log(e);\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"form\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"label\", null, \"Title\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"label\", null, \"Entry\"));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (JournalForm);\n\n//# sourceURL=webpack://starsalign/./client/src/components/JournalForm.jsx?");
 
 /***/ }),
 

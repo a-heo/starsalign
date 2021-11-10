@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-
+import JournalForm from './JournalForm';
+import Entries from './Entries';
 import { UserContext } from './Context/UserContext';
 
 const Journal = () => {
@@ -7,7 +8,8 @@ const Journal = () => {
 
   return (
     <div>
-      journal entries
+      <JournalForm />
+      <Entries />
     </div>
   );
 };
