@@ -9,7 +9,7 @@ const App = () => {
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState(null);
 
-  const userInfo = useMemo(() => ({ user, setUser }), [user, setUser])
+  const userInfo = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <>
