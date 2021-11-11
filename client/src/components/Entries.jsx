@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Entries = () => (
-  <div>entry</div>
+  <div>list of entries go here</div>
 );
 
 export default Entries;

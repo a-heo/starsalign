@@ -12,8 +12,14 @@ module.exports = (sequelize, DataTypes, User) =>
         key: "userId",
       },
     },
-    text: {
+    title: {
+      type: DataTypes.TEXT("medium"),
+    },
+    entry: {
       type: DataTypes.TEXT("long"),
+    },
+    feelings: {
+      type: DataTypes.CHAR,
     },
     date: {
       type: DataTypes.DATE,
