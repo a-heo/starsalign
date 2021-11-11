@@ -13,11 +13,11 @@ const Journal = JournalModel(sequelize, DataTypes, User);
 
 User.hasMany(Journal, {
   foreignKey: "userCode",
-  sourceKey: "userId",
+  sourceKey: "id",
 });
 Journal.belongsTo(User, {
   foreignKey: "userCode",
-  targetKey: "userId",
+  targetKey: "id",
 });
 
 // sequelize.sync({ force: true })
