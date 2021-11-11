@@ -9,6 +9,7 @@ router.use((req, res, next) => {
 
 //journalroutes
 router.post("/:id/journal", journalController.create);
+router.get('/:id/journal', journalController.get);
 
 router.get("/info", userController.get);
 router.post("/login", userController.check);

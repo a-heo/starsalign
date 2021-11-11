@@ -3,7 +3,7 @@ import { UserContext } from './Context/UserContext';
 
 const axios = require('axios');
 
-const JournalForm = () => {
+const JournalForm = ({ setEntries }) => {
   const [title, setTitle] = useState('');
   const [entry, setEntry] = useState('');
   const [emotion, setEmotion] = useState('');
@@ -11,11 +11,10 @@ const JournalForm = () => {
   const { user } = useContext(UserContext);
 
   const saveEntry = (data) => {
-    //create axios post here to save into users data; 
     axios.post(`/user/${user.id}/journal/`, data)
-    .then((result) => {
-        console.log(result);
-    })
+      .then((result) => {
+        setEntries((oldEntries) => [...oldEntries, result.data]);
+      });
   };
 
   const handleSubmit = (e) => {
@@ -47,7 +46,7 @@ const JournalForm = () => {
         <label>Emotional Level of this Entry</label>
         <br />
         <select value={emotion} onChange={(e) => setEmotion(e.target.value)} required>
-          <option></option>
+          <option />
           <option value="happy">Happy</option>
           <option value="neutral">Neutral</option>
           <option value="difficult">Difficult</option>
