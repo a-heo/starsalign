@@ -9,7 +9,16 @@ module.exports = {
       entry: req.body.entry,
       feelings: req.body.feelings,
     })
-    .then(result => res.send(result))
-    .catch(error => console.log(error, 'error in journal create'));
+      .then((result) => res.send(result))
+      .catch((error) => console.log(error, 'error in journal create'));
+  },
+  get: (req, res) => {
+    db.Journal.findAll({
+      where: {
+        userCode: req.params.id,
+      },
+    })
+      .then((result) => res.send(result))
+      .catch((error) => console.log(error, 'error in retrieving journal'));
   },
 };
