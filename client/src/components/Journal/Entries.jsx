@@ -3,7 +3,7 @@ import React from 'react';
 const Entries = ({ entries }) => (
   <div>
     {entries.map((journal) => (
-      <div>
+      <div key={journal.id}>
         <b>
           {journal.title}
         </b>

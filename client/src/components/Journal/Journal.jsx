@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import JournalForm from './JournalForm';
 import Entries from './Entries';
-import { UserContext } from './Context/UserContext';
+import { UserContext } from '../Context/UserContext';
 
 const axios = require('axios');
 
@@ -28,10 +28,9 @@ const Journal = () => {
         {today}
       </h3>
       <JournalForm setEntries={setEntries} />
-      {entries ? 
-      (<Entries entries={entries} />)
-      : null
-      }
+      {entries
+        ? (<Entries entries={entries} />)
+        : null}
     </div>
   );
 };
