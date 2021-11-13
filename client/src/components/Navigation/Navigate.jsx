@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 
-const Navigate = ({ login }) => (
+const Navigate = ({ login, handleLogout }) => (
   <div>
     <nav>
       <ul>
@@ -20,7 +20,7 @@ const Navigate = ({ login }) => (
               <Link to="/journal">My Journal</Link>
             </li>
             <li>
-              <button type="submit">Logout</button>
+              <button type="button" onClick={handleLogout}>Logout</button>
             </li>
           </div>
         ) : (

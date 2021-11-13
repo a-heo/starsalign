@@ -21,4 +21,13 @@ module.exports = {
       .then((result) => res.send(result))
       .catch((error) => console.log(error, 'error in retrieving journal'));
   },
+  delete: (req, res) => {
+    db.Journal.destroy({
+      where: {
+        id: req.body.journalId,
+      },
+    })
+      .then((result) => res.status(200))
+      .catch((error) => console.log(error, 'error in deleting info'));
+  },
 };

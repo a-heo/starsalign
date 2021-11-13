@@ -24,7 +24,6 @@ const JournalForm = ({ setEntries }) => {
     data.entry = entry;
     data.feelings = emotion;
     saveEntry(data);
-    alert('submit was pressed');
     setTitle('');
     setEntry('');
     setEmotion('');

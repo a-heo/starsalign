@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 
 import Routes from './Navigation/Routes';
 import Navigate from './Navigation/Navigate';
@@ -11,11 +11,18 @@ const App = () => {
 
   const userInfo = useMemo(() => ({ user, setUser }), [user, setUser]);
 
+  const handleLogout = () => {
+    setUser('');
+    setLogin(!login);
+    //not working fix this
+    return <Redirect to="/" />;
+  };
+
   return (
     <>
       <Router>
         <UserContext.Provider value={userInfo}>
-          <Navigate login={login} />
+          <Navigate login={login} handleLogout={handleLogout} />
           <Routes login={login} setLogin={setLogin} />
         </UserContext.Provider>
       </Router>
