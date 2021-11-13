@@ -17,7 +17,7 @@ const Entries = ({ entries, deleteEntry }) => (
         <div>
           {journal.feelings}
         </div>
-        <button type="button" onClick={() => {deleteEntry(journal.id)}}>delete</button>
+        <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
       </div>
     ))}
   </div>

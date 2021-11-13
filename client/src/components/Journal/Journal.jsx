@@ -11,27 +11,28 @@ const Journal = () => {
 
   const today = new Date().toLocaleDateString();
   
+  const getEntries = (id) => {
+    axios.get(`/user/${id}/journal`)
+    .then((result) => {
+      //probably better storing all info into user so logout is cleaner?
+      setEntries(result.data);
+    })
+    .catch((error) => {
+      console.log(error, 'error in retrieving journal entries');
+    });
+  } 
+
   useEffect(() => {
-    axios.get(`/user/${user.id}/journal`)
-      .then((result) => {
-        //probably better storing all info into user so logout is cleaner?
-        setEntries(result.data);
-      })
-      .catch((error) => {
-        console.log(error, 'error in retrieving journal entries');
-      });
+    getEntries(user.id);
   }, []);
 
   //refactor code to delete entry from db and load new entries
-  const deleteEntry = (id, idx) => {
-    console.log(id, idx, entries, 'deletedentry inside journal');
-    axios.delete(`/user/${user.id}/journal`, id)
+  const deleteEntry = (journalId) => {
+    axios.delete(`/user/${journalId}/journal`)
       .then(result => {
-        console.log(result, 'what comes back from delete?');
-        // setEntries(result.data);
+        getEntries(user.id);
       })
       .catch(error => {
-        console.log(error, 'error in deleting entries')
       });
   };
 
