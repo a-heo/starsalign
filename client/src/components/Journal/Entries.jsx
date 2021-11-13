@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Entries = ({ entries }) => (
+const Entries = ({ entries, deleteEntry }) => (
   <div>
     {entries.map((journal) => (
-      <div>
+      <div key={journal.id}>
         <b>
           {journal.title}
         </b>
@@ -17,6 +17,7 @@ const Entries = ({ entries }) => (
         <div>
           {journal.feelings}
         </div>
+        <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
       </div>
     ))}
   </div>

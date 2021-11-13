@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { UserContext } from './Context/UserContext';
+import { UserContext } from '../Context/UserContext';
 
 const axios = require('axios');
 
@@ -24,7 +24,6 @@ const JournalForm = ({ setEntries }) => {
     data.entry = entry;
     data.feelings = emotion;
     saveEntry(data);
-    alert('submit was pressed');
     setTitle('');
     setEntry('');
     setEmotion('');

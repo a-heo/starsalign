@@ -12,7 +12,7 @@ const Signup = ({ login, setLogin }) => {
 
   //use switch statement for this function and function withinRange
   const findSign = (birthdate) => {
-    const date = birthdate.slice(5, 7) + birthdate.slice(8, 10);
+    const date = Number((birthdate.slice(5, 7) + birthdate.slice(8, 10)));
     if (date > 320 && date < 421) {
       return "Aries";
     }
