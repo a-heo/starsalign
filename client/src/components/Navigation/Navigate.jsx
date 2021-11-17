@@ -1,39 +1,67 @@
 import React from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import styled from 'styled-components';
+
+const List = styled.ul`
+  text-decoration: none;
+  list-style-type: none;
+  magin: 0;
+  padding: 0;
+  font-size: calc(1rem + 1vw);
+  color: 
+`;
+
+const IndivLink = styled.li`
+  text-decoration: none;
+  &:hover {
+    font-weight: 700;
+    font-style: italic;
+  }
+`;
+
+const LogoutButton = styled.button`
+  padding: 0;
+  border: 0;
+  background: none;
+  &:hover {
+    font-weight: 700;
+    font-style: italic;
+  }
+`;
 
 const Navigate = ({ login, handleLogout }) => (
   <div>
     <nav>
-      <ul>
-        <li>
+      <List>
+        <IndivLink>
           <Link to="/">Main</Link>
-        </li>
-        <li>
+        </IndivLink>
+        <IndivLink>
           <Link to="/about">About</Link>
-        </li>
+        </IndivLink>
         {login ? (
           <div>
-            <li>
+            <IndivLink>
               <Link to="/info">My Info</Link>
-            </li>
-            <li>
+            </IndivLink>
+            <IndivLink>
               <Link to="/journal">My Journal</Link>
-            </li>
-            <li>
-              <button type="button" onClick={handleLogout}>Logout</button>
-            </li>
+            </IndivLink>
+            <IndivLink>
+              <LogoutButton type="button" onClick={handleLogout}>Logout</LogoutButton>
+            </IndivLink>
           </div>
         ) : (
           <div>
-            <li>
+            <IndivLink>
               <Link to="/login">Login</Link>
-            </li>
-            <li>
+            </IndivLink>
+            <IndivLink>
               <Link to="/signup">Signup</Link>
-            </li>
+            </IndivLink>
           </div>
         )}
-      </ul>
+      </List>
     </nav>
     <h1>Stars Align</h1>
   </div>
