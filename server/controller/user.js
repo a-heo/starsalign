@@ -1,6 +1,9 @@
 const db = require("../database/index");
 // const Users = require('../model/user');
 
+//create a parameter that the request info is acceptable
+//look into sanitizing data inputs(express validator)
+//write tests for the methods 
 module.exports = {
   create: (req, res) => {
     console.log(req.body, "create");

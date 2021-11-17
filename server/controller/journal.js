@@ -22,7 +22,6 @@ module.exports = {
       .catch((error) => console.log(error, 'error in retrieving journal'));
   },
   delete: (req, res) => {
-    console.log(req.params, 'inside delete function');
     db.Journal.destroy({
       where: {
         id: req.params.id,
