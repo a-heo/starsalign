@@ -17,6 +17,7 @@ const JournalForm = ({ setEntries }) => {
       });
   };
 
+  //create one state where all info gets updated into that one obj state
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {};
