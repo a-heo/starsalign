@@ -1,9 +1,18 @@
 import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import Routes from './Navigation/Routes';
 import Navigate from './Navigation/Navigate';
 import { UserContext } from './Context/UserContext';
+
+const GlobalStyle = createGlobalStyle` 
+  body {
+    display: flex; 
+    background-color: #f0f1b3;
+    font-family: 'Zilla SLab', serif;
+  }
+`;
 
 const App = () => {
   const [login, setLogin] = useState(false);
@@ -20,6 +29,7 @@ const App = () => {
 
   return (
     <>
+      <GlobalStyle />
       <Router>
         <UserContext.Provider value={userInfo}>
           <Navigate login={login} handleLogout={handleLogout} />
