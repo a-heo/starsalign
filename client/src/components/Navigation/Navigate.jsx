@@ -5,14 +5,18 @@ import styled from 'styled-components';
 const List = styled.ul`
   text-decoration: none;
   list-style-type: none;
-  magin: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
   padding: 0;
-  font-size: calc(1rem + 1vw);
-  color: 
+  font-size: min(calc(1rem + 2vw), 62px);
+  justify-content: flex-end;
+  gap: max(2vw, 40px);
 `;
 
 const IndivLink = styled.li`
-  text-decoration: none;
+  color: blue;
   &:hover {
     font-weight: 700;
     font-style: italic;
@@ -40,7 +44,7 @@ const Navigate = ({ login, handleLogout }) => (
           <Link to="/about">About</Link>
         </IndivLink>
         {login ? (
-          <div>
+          <>
             <IndivLink>
               <Link to="/info">My Info</Link>
             </IndivLink>
@@ -50,16 +54,16 @@ const Navigate = ({ login, handleLogout }) => (
             <IndivLink>
               <LogoutButton type="button" onClick={handleLogout}>Logout</LogoutButton>
             </IndivLink>
-          </div>
+          </>
         ) : (
-          <div>
+          <>
             <IndivLink>
               <Link to="/login">Login</Link>
             </IndivLink>
             <IndivLink>
               <Link to="/signup">Signup</Link>
             </IndivLink>
-          </div>
+          </>
         )}
       </List>
     </nav>
