@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
+    color: #5e3b4d;
+    text-align: center;
     font-size: min(calc(1rem + 1vw), 50px);
   }
   #root {

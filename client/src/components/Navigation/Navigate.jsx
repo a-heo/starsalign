@@ -10,16 +10,22 @@ const List = styled.ul`
   width: 100%;
   margin: 0;
   padding: 0;
+  background: #c5e5e3;
   font-size: min(calc(1rem + 2vw), 62px);
   justify-content: flex-end;
-  gap: max(2vw, 40px);
+  gap: min(1vw, 10px);
 `;
 
-const IndivLink = styled.li`
-  color: blue;
+const NavLink = styled(Link)`
+  color:  #a3a7e4;
+  padding: 0px 10px 0px;
+  text-decoration: none;
   &:hover {
     font-weight: 700;
     font-style: italic;
+    background: #a3a7e4;
+    color: #c5e5e3;
+    border: 1px solid #c5e5e3;
   }
 `;
 
@@ -27,9 +33,17 @@ const LogoutButton = styled.button`
   padding: 0;
   border: 0;
   background: none;
+  font-family: 'Zilla SLab', serif;
+  font-size: min(calc(1rem + 2vw), 62px);
+  justify-content: flex-end;
+  color:  #a3a7e4;
+  padding: 0px 10px 0px;
   &:hover {
     font-weight: 700;
     font-style: italic;
+    background: #a3a7e4;
+    color: #c5e5e3;
+    border: 1px solid #c5e5e3;
   }
 `;
 
@@ -37,32 +51,32 @@ const Navigate = ({ login, handleLogout }) => (
   <div>
     <nav>
       <List>
-        <IndivLink>
-          <Link to="/">Main</Link>
-        </IndivLink>
-        <IndivLink>
-          <Link to="/about">About</Link>
-        </IndivLink>
+        <li>
+          <NavLink to="/">Main</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">About</NavLink>
+        </li>
         {login ? (
           <>
-            <IndivLink>
-              <Link to="/info">My Info</Link>
-            </IndivLink>
-            <IndivLink>
-              <Link to="/journal">My Journal</Link>
-            </IndivLink>
-            <IndivLink>
+            <li>
+              <NavLink to="/info">My Info</NavLink>
+            </li>
+            <li>
+              <NavLink to="/journal">My Journal</NavLink>
+            </li>
+            <li>
               <LogoutButton type="button" onClick={handleLogout}>Logout</LogoutButton>
-            </IndivLink>
+            </li>
           </>
         ) : (
           <>
-            <IndivLink>
-              <Link to="/login">Login</Link>
-            </IndivLink>
-            <IndivLink>
-              <Link to="/signup">Signup</Link>
-            </IndivLink>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/signup">Signup</NavLink>
+            </li>
           </>
         )}
       </List>
