@@ -1,9 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
+import styled from 'styled-components';
+
 import JournalForm from './JournalForm';
 import Entries from './Entries';
 import { UserContext } from '../Context/UserContext';
 
 const axios = require('axios');
+
+const JournalBox = styled.div`
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-bottom: 10vw;
+`;
 
 const Journal = () => {
   const [entries, setEntries] = useState(null);
@@ -37,7 +45,7 @@ const Journal = () => {
   };
 
   return (
-    <div>
+    <JournalBox>
       <h3>
         Journal Entry for
         {today}
@@ -46,7 +54,7 @@ const Journal = () => {
       {entries
         ? (<Entries entries={entries} deleteEntry={deleteEntry} />)
         : null}
-    </div>
+    </JournalBox>
   );
 };
 

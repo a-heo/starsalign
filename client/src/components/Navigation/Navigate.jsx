@@ -1,41 +1,101 @@
 import React from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import styled from 'styled-components';
+
+const List = styled.ul`
+  text-decoration: none;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f0f1b3;
+  font-size: min(calc(1rem + 2vw), 62px);
+  justify-content: flex-end;
+  gap: min(1vw, 10px);
+`;
+
+const NavLink = styled(Link)`
+  color:  #a3a7e4;
+  padding: 0px 10px 0px;
+  text-decoration: none;
+  &:hover {
+    font-weight: 700;
+    font-style: italic;
+    background: #a3a7e4;
+    color: #f0f1b3;
+    border: 1px solid #f0f1b3;
+  }
+`;
+
+const LogoutButton = styled.button`
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: 'Zilla SLab', serif;
+  font-size: min(calc(1rem + 2vw), 62px);
+  justify-content: flex-end;
+  color:  #a3a7e4;
+  padding: 0px 10px 0px;
+  &:hover {
+    font-weight: 700;
+    font-style: italic;
+    background: #a3a7e4;
+    color: #f0f1b3;
+    border: 1px solid #f0f1b3;
+  }
+`;
+
+const Title = styled.h1`
+  &.beforeLogin {
+    font-size: max(15rem, 30px);
+    color: #a3a7e4;
+    letter-spacing: 3vw;
+    display: inline-block;
+    font-weight: normal;
+  }
+  &.afterLogin {
+    color: #934662;
+    font-weight: normal;
+  }
+`;
 
 const Navigate = ({ login, handleLogout }) => (
   <div>
     <nav>
-      <ul>
+      <List>
         <li>
-          <Link to="/">Main</Link>
+          <NavLink to="/">Main</NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/about">About</NavLink>
         </li>
         {login ? (
-          <div>
+          <>
             <li>
-              <Link to="/info">My Info</Link>
+              <NavLink to="/info">My Info</NavLink>
             </li>
             <li>
-              <Link to="/journal">My Journal</Link>
+              <NavLink to="/journal">My Journal</NavLink>
             </li>
             <li>
-              <button type="button" onClick={handleLogout}>Logout</button>
+              <LogoutButton type="button" onClick={handleLogout}>Logout</LogoutButton>
             </li>
-          </div>
+          </>
         ) : (
-          <div>
+          <>
             <li>
-              <Link to="/login">Login</Link>
+              <NavLink to="/login">Login</NavLink>
             </li>
             <li>
-              <Link to="/signup">Signup</Link>
+              <NavLink to="/signup">Signup</NavLink>
             </li>
-          </div>
+          </>
         )}
-      </ul>
+      </List>
     </nav>
-    <h1>Stars Align</h1>
+    <Title className={login ? 'afterLogin' : 'beforeLogin'}>STARS ALIGN</Title>
   </div>
 );
 

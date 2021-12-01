@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 import Routes from './Navigation/Routes';
 import Navigate from './Navigation/Navigate';
 import { UserContext } from './Context/UserContext';
+import GlobalStyle from './theme/globalStyle';
 
 const App = () => {
   const [login, setLogin] = useState(false);
@@ -20,6 +21,7 @@ const App = () => {
 
   return (
     <>
+      <GlobalStyle />
       <Router>
         <UserContext.Provider value={userInfo}>
           <Navigate login={login} handleLogout={handleLogout} />
