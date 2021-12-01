@@ -10,7 +10,7 @@ const List = styled.ul`
   width: 100%;
   margin: 0;
   padding: 0;
-  background: #c5e5e3;
+  background: #f0f1b3;
   font-size: min(calc(1rem + 2vw), 62px);
   justify-content: flex-end;
   gap: min(1vw, 10px);
@@ -24,8 +24,8 @@ const NavLink = styled(Link)`
     font-weight: 700;
     font-style: italic;
     background: #a3a7e4;
-    color: #c5e5e3;
-    border: 1px solid #c5e5e3;
+    color: #f0f1b3;
+    border: 1px solid #f0f1b3;
   }
 `;
 
@@ -42,8 +42,22 @@ const LogoutButton = styled.button`
     font-weight: 700;
     font-style: italic;
     background: #a3a7e4;
-    color: #c5e5e3;
-    border: 1px solid #c5e5e3;
+    color: #f0f1b3;
+    border: 1px solid #f0f1b3;
+  }
+`;
+
+const Title = styled.h1`
+  &.beforeLogin {
+    font-size: max(15rem, 30px);
+    color: #a3a7e4;
+    letter-spacing: 3vw;
+    display: inline-block;
+    font-weight: normal;
+  }
+  &.afterLogin {
+    color: #934662;
+    font-weight: normal;
   }
 `;
 
@@ -81,7 +95,7 @@ const Navigate = ({ login, handleLogout }) => (
         )}
       </List>
     </nav>
-    <h1>Stars Align</h1>
+    <Title className={login ? 'afterLogin' : 'beforeLogin'}>STARS ALIGN</Title>
   </div>
 );
 

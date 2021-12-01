@@ -1,7 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useContext } from 'react';
+import styled from 'styled-components';
 
 import { UserContext } from './Context/UserContext';
+
+const Box = styled.div`
+  padding: 2vw;
+`;
 
 const Home = () => {
   const { user, setUser } = useContext(UserContext);
@@ -31,7 +36,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <Box>
       {' '}
       {
       user
@@ -69,7 +74,7 @@ const Home = () => {
         )
         : null
     }
-    </>
+    </Box>
   );
 };
 
