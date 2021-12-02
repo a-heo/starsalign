@@ -33,10 +33,9 @@ const Title = styled.b`
   color: #a06ee1;
 `;
 
-const Entries = ({ entries, deleteEntry }) => (
-  <div>
-    {entries.map((journal) => (
-      <JournalBox>
+const Entries = ({ entries, deleteEntry, journalFilter }) => {
+  const mapEntries = (posts) => posts.map((journal) => (
+    <JournalBox>
       <JournalEntry key={journal.id}>
         <Title>
           {journal.title}
@@ -53,9 +52,19 @@ const Entries = ({ entries, deleteEntry }) => (
         </JournalSection>
         <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
       </JournalEntry>
-      </JournalBox>
-    ))}
-  </div>
-);
+    </JournalBox>
+  ));
+
+  const filteredEntries = (postings) => {
+    const post = postings.filter((posting) => posting.feelings === journalFilter);
+    return mapEntries(post);
+  };
+
+  return (
+    <div>
+      {journalFilter === '' ? (mapEntries(entries)) : (filteredEntries(entries))}
+    </div>
+  );
+};
 
 export default Entries;
