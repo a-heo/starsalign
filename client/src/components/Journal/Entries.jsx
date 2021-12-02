@@ -62,7 +62,7 @@ const Entries = ({ entries, deleteEntry, journalFilter }) => {
 
   return (
     <div>
-      {journalFilter === '' ? (mapEntries(entries)) : (filteredEntries(entries))}
+      {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
     </div>
   );
 };
