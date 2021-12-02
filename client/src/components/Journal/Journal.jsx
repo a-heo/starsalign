@@ -16,6 +16,7 @@ const JournalBox = styled.div`
 const Journal = () => {
   const [entries, setEntries] = useState(null);
   const { user, setUser } = useContext(UserContext);
+  const [journalFilter, setJournalFilter] = useState('');
 
   const today = new Date().toLocaleDateString();
 
@@ -51,8 +52,16 @@ const Journal = () => {
         {today}
       </h3>
       <JournalForm setEntries={setEntries} />
+      <label for="options">Options</label>
+      <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
+        <option/>
+        <option value="happy">Happy</option>
+        <option value="neutral">Neutral</option>
+        <option value="difficult">Difficult</option>
+        <option value="dark">Deep Abyss</option>
+      </select>
       {entries
-        ? (<Entries entries={entries} deleteEntry={deleteEntry} />)
+        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter}/>)
         : null}
     </JournalBox>
   );
