@@ -52,7 +52,7 @@ const Journal = () => {
         {today}
       </h3>
       <JournalForm setEntries={setEntries} />
-      <label for="options">Options</label>
+      <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
         <option value="all">All</option>
         <option value="happy">Happy</option>
