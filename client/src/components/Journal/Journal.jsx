@@ -16,7 +16,7 @@ const JournalBox = styled.div`
 const Journal = () => {
   const [entries, setEntries] = useState(null);
   const { user, setUser } = useContext(UserContext);
-  const [journalFilter, setJournalFilter] = useState('');
+  const [journalFilter, setJournalFilter] = useState('all');
 
   const today = new Date().toLocaleDateString();
 
@@ -24,7 +24,7 @@ const Journal = () => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {
       // probably better storing all info into user so logout is cleaner?
-        setEntries(result.data);
+        setEntries(result.data.reverse());
       })
       .catch((error) => {
         console.log(error, 'error in retrieving journal entries');
@@ -52,9 +52,9 @@ const Journal = () => {
         {today}
       </h3>
       <JournalForm setEntries={setEntries} />
-      <label for="options">Options</label>
+      <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
-        <option/>
+        <option value="all">All</option>
         <option value="happy">Happy</option>
         <option value="neutral">Neutral</option>
         <option value="difficult">Difficult</option>

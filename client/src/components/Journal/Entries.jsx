@@ -32,17 +32,16 @@ const JournalSection = styled.div`
 const Title = styled.b`
   color: #a06ee1;
 `;
-
 const Entries = ({ entries, deleteEntry, journalFilter }) => {
   const mapEntries = (posts) => posts.map((journal) => (
-    <JournalBox>
-      <JournalEntry key={journal.id}>
+    <JournalBox key={journal.id}>
+      <JournalEntry>
         <Title>
           {journal.title}
         </Title>
         <br />
         <JournalSection className="date">
-          {journal.createdAt}
+          {journal.createdAt.slice(0, 10)}
         </JournalSection>
         <JournalSection className="entry">
           {journal.entry}
@@ -62,7 +61,7 @@ const Entries = ({ entries, deleteEntry, journalFilter }) => {
 
   return (
     <div>
-      {journalFilter === '' ? (mapEntries(entries)) : (filteredEntries(entries))}
+      {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
     </div>
   );
 };
