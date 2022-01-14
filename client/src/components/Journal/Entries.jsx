@@ -1,8 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const JournalBoxes = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: auto;
+  justify-content: space-between;
+  ${'' /* flex: 1 1 auto; */}
+`;
+
 const JournalBox = styled.div`
   padding: 1vw;
+  flex: 0 1 33%;
 `;
 
 const JournalEntry = styled.div`
@@ -60,9 +69,9 @@ const Entries = ({ entries, deleteEntry, journalFilter }) => {
   };
 
   return (
-    <div>
+    <JournalBoxes>
       {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
-    </div>
+    </JournalBoxes>
   );
 };
 

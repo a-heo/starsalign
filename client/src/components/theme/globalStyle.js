@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex; 
     flex: 1 1 auto;
     background-color: white;
-    font-family: 'Zilla Slab';
+    font-family: 'Red Hat Display';
     min-width: 100%;
     height: 100%;
     margin: 0;
@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
   input {
     border: 1px;
     background-color: #e5edc4;
-    font-family: 'Zilla SLab', serif;
+    font-family: 'Red Hat Display';
     font-size: min(calc(1rem + 1vw), 48px);
     justify-content: flex-end;
     color:  #a3a7e4;

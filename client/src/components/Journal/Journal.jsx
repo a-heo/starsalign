@@ -48,7 +48,7 @@ const Journal = () => {
   return (
     <JournalBox>
       <h3>
-        Journal Entry for
+        Journal Entry for{' '}
         {today}
       </h3>
       <JournalForm setEntries={setEntries} />
