@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const JournalBoxes = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: wrap;
   flex-basis: auto;
   justify-content: space-between;
   ${'' /* flex: 1 1 auto; */}
@@ -45,10 +45,7 @@ const Title = styled.b`
   color: #a06ee1;
 `;
 const Entries = ({ entries, deleteEntry, journalFilter }) => {
-  const mapEntries = (posts) => posts.map((journal) => {
-    // const entry = journal.entry.split('\n');
-    console.log(journal.entry, 'inside entries function in entries component');
-    return (
+  const mapEntries = (posts) => posts.map((journal) => (
     <JournalBox key={journal.id}>
       <JournalEntry>
         <Title>
@@ -68,7 +65,7 @@ const Entries = ({ entries, deleteEntry, journalFilter }) => {
         <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
       </JournalEntry>
     </JournalBox>
-  )});
+  ));
 
   const filteredEntries = (postings) => {
     const post = postings.filter((posting) => posting.feelings === journalFilter);
