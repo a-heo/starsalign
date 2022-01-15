@@ -3,28 +3,25 @@ import styled from 'styled-components';
 
 const JournalBoxes = styled.div`
   display: flex;
-  flex-flow: wrap;
-  flex-basis: auto;
-  justify-content: space-between;
-  ${'' /* flex: 1 1 auto; */}
+  flex-flow: row wrap;
+  ${'' /* justify-content: space-between; */}
 `;
 
 const JournalBox = styled.div`
   padding: 1vw;
-  flex: 0 1 33%;
-`;
-
-const JournalEntry = styled.div`
+  flex-basis: auto;
+  flex: 0 1 30%;
   font-size: 3rem;
   text-align: left;
   border: .2vw solid #e5edc4;
   padding: .2vw;
+  margin: .5em;
 `;
 
 const JournalSection = styled.div`
   &.date{
     color: #a06ee1;
-    font-size: 2rem;
+    font-size: 1rem;
   }
   $.entry{
     color: #421b9b;
@@ -43,11 +40,13 @@ const JournalSection = styled.div`
 
 const Title = styled.b`
   color: #a06ee1;
+  white-space: pre-line;
 `;
+
 const Entries = ({ entries, deleteEntry, journalFilter }) => {
   const mapEntries = (posts) => posts.map((journal) => (
     <JournalBox key={journal.id}>
-      <JournalEntry>
+      <div>
         <Title>
           {journal.title}
         </Title>
@@ -55,15 +54,17 @@ const Entries = ({ entries, deleteEntry, journalFilter }) => {
         <JournalSection className="date">
           {journal.createdAt.slice(0, 10)}
         </JournalSection>
+        <br />
         <JournalSection className="entry">
           {journal.entry}
-          {/* {journal.entry.replace(\n, '<br>')} */}
         </JournalSection>
+        <br />
         <JournalSection className="feelings">
           {journal.feelings}
         </JournalSection>
+        <button type="button" onClick={() => }>edit</button>
         <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
-      </JournalEntry>
+      </div>
     </JournalBox>
   ));
 

@@ -61,7 +61,7 @@ const Journal = () => {
         <option value="dark">Deep Abyss</option>
       </select>
       {entries
-        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter}/>)
+        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter} />)
         : null}
     </JournalBox>
   );
