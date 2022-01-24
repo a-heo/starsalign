@@ -9,6 +9,7 @@ const Signup = ({ login, setLogin }) => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [signedUp, setSignedUp] = useState(false);
 
   //use switch statement for this function and function withinRange
   const findSign = (birthdate) => {
@@ -56,7 +57,11 @@ const Signup = ({ login, setLogin }) => {
       .post("/user", data)
       .then((response) => {
         console.log("successfully saved userinfo");
+        setSignedUp(true);
         //redirect to homepage with new info
+      })
+      .then(() => {
+        alert(`Welcome to the family, ${data.firstName}!`);
       })
       .catch((error) => {
         console.log("error in saving user info", error);
@@ -128,6 +133,14 @@ const Signup = ({ login, setLogin }) => {
         <input type="submit" value="submit" />
       </form>
       {/* redirect path if login is true to homepage */}
+      {signedUp ? (
+        <Redirect
+          from="/signup"
+          to={{
+            pathname: "/login"
+          }}
+        />
+      ) : null}
     </div>
   );
 };
