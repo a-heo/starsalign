@@ -105,7 +105,7 @@ const Entries = ({
         <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
       </div>
     </JournalBox>
-  ));
+  )).reverse();
 
   const filteredEntries = (postings) => {
     const post = postings.filter((posting) => posting.feelings === journalFilter);

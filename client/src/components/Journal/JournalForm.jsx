@@ -6,7 +6,7 @@ import {
 
 const axios = require('axios');
 
-const JournalForm = ({ setEntries, setModal, modalOn, journal}) => {
+const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => {
   const id = journal && journal.id ? journal.id : undefined;
   //these conditions aren't working --need to figure out why
   const [title, setTitle] = useState(id ? journal.title : '');
@@ -41,7 +41,10 @@ const JournalForm = ({ setEntries, setModal, modalOn, journal}) => {
   const updateEntry = (data) => {
     axios.put(`/user/${user.id}/journal/${journal.id}`, data)
       .then((result) => {
+        let currdata = result.data;
+        const newInfo = currdata.concat()
         setEntries((oldEntries) => [...oldEntries, result.data]);
+        getEntries(user.id);
       })
       .then(setModal(false));
   };

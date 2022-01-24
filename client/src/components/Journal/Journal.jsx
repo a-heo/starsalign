@@ -24,7 +24,7 @@ const Journal = () => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {
       // probably better storing all info into user so logout is cleaner?
-        setEntries(result.data.reverse());
+        setEntries(result.data);
       })
       .catch((error) => {
         console.log(error, 'error in retrieving journal entries');
@@ -33,7 +33,7 @@ const Journal = () => {
 
   useEffect(() => {
     getEntries(user.id);
-  }, [user]);
+  }, []);
 
   const deleteEntry = (journalId) => {
     axios.delete(`/user/${journalId}/journal`)
@@ -70,6 +70,7 @@ const Journal = () => {
             journalFilter={journalFilter}
             setModal={setModal}
             setEntryToChange={setEntryToChange}
+            getEntries={getEntries}
           />
         )
         : null}
