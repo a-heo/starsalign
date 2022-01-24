@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../Context/UserContext';
 import {
   Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,
@@ -6,17 +6,40 @@ import {
 
 const axios = require('axios');
 
-const JournalForm = ({ setEntries, setModal, modalOn }) => {
-  const [title, setTitle] = useState('');
-  const [entry, setEntry] = useState('');
-  const [emotion, setEmotion] = useState('');
+const JournalForm = ({ setEntries, setModal, modalOn, journal}) => {
+  const id = journal && journal.id ? journal.id : undefined;
+  //these conditions aren't working --need to figure out why
+  const [title, setTitle] = useState(id ? journal.title : '');
+  const [entry, setEntry] = useState(id ? journal.entry : '');
+  const [emotion, setEmotion] = useState(id ? journal.feelings : '');
 
   const { user } = useContext(UserContext);
 
   const today = new Date().toLocaleDateString();
 
+  //brute force method for editing existing entry --need to fix 
+  useEffect(() => {
+    if (journal) {
+      setTitle(journal.title);
+      setEntry(journal.entry);
+      setEmotion(journal.feelings);
+    } else {
+      setTitle('');
+      setEntry('');
+      setEmotion('');
+    };
+  }, [journal]);
+
   const saveEntry = (data) => {
     axios.post(`/user/${user.id}/journal/`, data)
+      .then((result) => {
+        setEntries((oldEntries) => [...oldEntries, result.data]);
+      })
+      .then(setModal(false));
+  };
+
+  const updateEntry = (data) => {
+    axios.put(`/user/${user.id}/journal/${journal.id}`, data)
       .then((result) => {
         setEntries((oldEntries) => [...oldEntries, result.data]);
       })
@@ -30,7 +53,7 @@ const JournalForm = ({ setEntries, setModal, modalOn }) => {
     data.title = title;
     data.entry = entry;
     data.feelings = emotion;
-    saveEntry(data);
+    id ? updateEntry(data) : saveEntry(data);
     setTitle('');
     setEntry('');
     setEmotion('');
@@ -43,9 +66,10 @@ const JournalForm = ({ setEntries, setModal, modalOn }) => {
           <ModalContent>
             <ModalHeader>
               <h3>
-                Journal Entry for
-                {' '}
-                {today}
+                {id ? 'Update entry' :
+                  (`Journal Entry for ${today}`
+                  )
+                }
               </h3>
             </ModalHeader>
             <ModalBody>
@@ -53,7 +77,7 @@ const JournalForm = ({ setEntries, setModal, modalOn }) => {
                 <div>
                   <label>Title</label>
                   <br />
-                  <textarea name="title" placeholder="Enter Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                  <textarea name="title" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} required />
                 </div>
                 <div>
                   <label>Entry</label>

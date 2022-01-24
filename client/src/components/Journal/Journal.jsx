@@ -18,12 +18,12 @@ const Journal = () => {
   const { user, setUser } = useContext(UserContext);
   const [journalFilter, setJournalFilter] = useState('all');
   const [modalOn, setModal] = useState(false);
+  const [entryToChange, setEntryToChange] = useState({});
 
   const getEntries = (id) => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {
       // probably better storing all info into user so logout is cleaner?
-        console.log(result, 'results from getentries');
         setEntries(result.data.reverse());
       })
       .catch((error) => {
@@ -33,7 +33,7 @@ const Journal = () => {
 
   useEffect(() => {
     getEntries(user.id);
-  }, []);
+  }, [user]);
 
   const deleteEntry = (journalId) => {
     axios.delete(`/user/${journalId}/journal`)
@@ -51,9 +51,9 @@ const Journal = () => {
 
   return (
     <JournalBox>
-      <button onClick={() => { setModal(true); }}>Write Entry</button>
+      <button onClick={() => { setModal(true); setEntryToChange(undefined)}}>Write Entry</button>
       <br />
-      <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} />
+      <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} journal={entryToChange} />
       <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
         <option value="all">All</option>
@@ -68,7 +68,8 @@ const Journal = () => {
             entries={entries}
             deleteEntry={deleteEntry}
             journalFilter={journalFilter}
-            editEntry={editEntry}
+            setModal={setModal}
+            setEntryToChange={setEntryToChange}
           />
         )
         : null}

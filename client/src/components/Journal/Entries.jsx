@@ -44,9 +44,8 @@ const Title = styled.b`
 `;
 
 const Entries = ({
-  entries, deleteEntry, editEntry, journalFilter,
+  entries, deleteEntry, setModal, journalFilter, setEntryToChange
 }) => {
-  const [edit, changeEdit] = useState(false);
 
   // const updateEntry = (journal) => (
   //   <form>
@@ -97,8 +96,8 @@ const Entries = ({
         <button
           type="button"
           onClick={() => {
-            changeEdit(true);
-            editEntry(journal.id);
+            setEntryToChange(journal);
+            setModal(true);
           }}
         >
           edit
