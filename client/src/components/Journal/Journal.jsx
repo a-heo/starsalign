@@ -24,6 +24,7 @@ const Journal = () => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {
       // probably better storing all info into user so logout is cleaner?
+        console.log(result, 'results from getentries');
         setEntries(result.data.reverse());
       })
       .catch((error) => {
@@ -45,6 +46,11 @@ const Journal = () => {
       });
   };
 
+  const editEntry = (journalId) => {
+    console.log(journalId, 'editEntry', user);
+
+  };
+
   return (
     <JournalBox>
       <h3>
@@ -61,7 +67,7 @@ const Journal = () => {
         <option value="dark">Deep Abyss</option>
       </select>
       {entries
-        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter} />)
+        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter} editEntry={editEntry} />)
         : null}
     </JournalBox>
   );

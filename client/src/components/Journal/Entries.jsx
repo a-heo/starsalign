@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const JournalBoxes = styled.div`
@@ -43,7 +43,39 @@ const Title = styled.b`
   white-space: pre-line;
 `;
 
-const Entries = ({ entries, deleteEntry, journalFilter }) => {
+const Entries = ({
+  entries, deleteEntry, editEntry, journalFilter,
+}) => {
+  const [edit, changeEdit] = useState(false);
+
+  // const updateEntry = (journal) => (
+  //   <form>
+  //     <div>
+  //       <label for="title">Title</label>
+  //       <br />
+  //       <textarea name="title" placeholder="Enter Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+  //     </div>
+  //     <div>
+  //       <label for="entry">Entry</label>
+  //       <br />
+  //       <textarea name="entry" placeholder={journal.entry} rows="5" value={entry} onChange={(e) => setEntry(e.target.value)} required />
+  //     </div>
+  //     <div>
+  //       <label for="emotions">Emotional Level of this Entry</label>
+  //       <br />
+  //       <select value={emotion} onChange={(e) => setEmotion(e.target.value)} required>
+  //         <option />
+  //         <option value="happy">Happy</option>
+  //         <option value="neutral">Neutral</option>
+  //         <option value="difficult">Difficult</option>
+  //         <option value="dark">Deep Abyss</option>
+  //       </select>
+  //     </div>
+  //     <br />
+  //     <input type="submit" value="submit" />
+  //   </form>
+  // );
+
   const mapEntries = (posts) => posts.map((journal) => (
     <JournalBox key={journal.id}>
       <div>
@@ -62,7 +94,15 @@ const Entries = ({ entries, deleteEntry, journalFilter }) => {
         <JournalSection className="feelings">
           {journal.feelings}
         </JournalSection>
-        <button type="button" onClick={() => }>edit</button>
+        <button
+          type="button"
+          onClick={() => {
+            changeEdit(true);
+            editEntry(journal.id);
+          }}
+        >
+          edit
+        </button>
         <button type="button" onClick={() => deleteEntry(journal.id)}>delete</button>
       </div>
     </JournalBox>
