@@ -19,7 +19,6 @@ const Journal = () => {
   const [journalFilter, setJournalFilter] = useState('all');
   const [modalOn, setModal] = useState(false);
 
-
   const getEntries = (id) => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {
@@ -48,12 +47,11 @@ const Journal = () => {
 
   const editEntry = (journalId) => {
     console.log(journalId, 'editEntry', user);
-
   };
 
   return (
     <JournalBox>
-      <button onClick={() => {setModal(true)}}>Write Entry</button>
+      <button onClick={() => { setModal(true); }}>Write Entry</button>
       <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} />
       <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
@@ -64,7 +62,14 @@ const Journal = () => {
         <option value="dark">Deep Abyss</option>
       </select>
       {entries
-        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter} editEntry={editEntry} />)
+        ? (
+          <Entries
+            entries={entries}
+            deleteEntry={deleteEntry}
+            journalFilter={journalFilter}
+            editEntry={editEntry}
+          />
+        )
         : null}
     </JournalBox>
   );

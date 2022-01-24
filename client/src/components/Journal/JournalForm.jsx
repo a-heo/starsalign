@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../Context/UserContext';
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from '../theme/modal';
+import {
+  Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,
+} from '../theme/modal';
 
 const axios = require('axios');
 
@@ -20,7 +22,7 @@ const JournalForm = ({ setEntries, setModal, modalOn }) => {
       });
   };
 
-  //create one state where all info gets updated into that one obj state
+  // create one state where all info gets updated into that one obj state
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {};
@@ -35,24 +37,25 @@ const JournalForm = ({ setEntries, setModal, modalOn }) => {
 
   return (
     <>
-    {modalOn ? (
-      <Modal>
-      <ModalContent>
-        <ModalHeader>
-          <h3>
-            Journal Entry for{' '}
-            {today}
-          </h3>
-        </ModalHeader>
-      </ModalContent>
-      <ModalBody>
-      This is where the journal form appears
-      </ModalBody>
-      <ModalFooter>
-        <button onClick={() => {setModal(!modalOn)}}>Close</button>
-      </ModalFooter>
-    </Modal>) : null
-    }
+      {modalOn ? (
+        <Modal>
+          <ModalContent>
+            <ModalHeader>
+              <h3>
+                Journal Entry for
+                {' '}
+                {today}
+              </h3>
+            </ModalHeader>
+          </ModalContent>
+          <ModalBody>
+            This is where the journal form appears
+          </ModalBody>
+          <ModalFooter>
+            <button onClick={() => { setModal(!modalOn); }}>Close</button>
+          </ModalFooter>
+        </Modal>
+      ) : null}
     </>
     // <form onSubmit={handleSubmit}>
     //   <div>
