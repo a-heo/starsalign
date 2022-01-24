@@ -17,8 +17,8 @@ const Journal = () => {
   const [entries, setEntries] = useState(null);
   const { user, setUser } = useContext(UserContext);
   const [journalFilter, setJournalFilter] = useState('all');
+  const [modalOn, setModal] = useState(false);
 
-  const today = new Date().toLocaleDateString();
 
   const getEntries = (id) => {
     axios.get(`/user/${id}/journal`)
@@ -53,11 +53,8 @@ const Journal = () => {
 
   return (
     <JournalBox>
-      <h3>
-        Journal Entry for{' '}
-        {today}
-      </h3>
-      <JournalForm setEntries={setEntries} />
+      <button onClick={() => {setModal(true)}}>Write Entry</button>
+      <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} />
       <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
         <option value="all">All</option>
