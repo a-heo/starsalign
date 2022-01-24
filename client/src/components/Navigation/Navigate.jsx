@@ -11,7 +11,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   background: #f0f1b3;
-  font-size: min(calc(1rem + 2vw), 62px);
+  font-size: 1.75vmax;
   justify-content: flex-end;
   gap: min(1vw, 10px);
 `;
@@ -33,8 +33,8 @@ const LogoutButton = styled.button`
   padding: 0;
   border: 0;
   background: none;
-  font-family: 'Zilla SLab', serif;
-  font-size: min(calc(1rem + 2vw), 62px);
+  font-family: 'Red Hat Display', serif;
+  font-size: 1.75vmax;
   justify-content: flex-end;
   color:  #a3a7e4;
   padding: 0px 10px 0px;
@@ -49,15 +49,17 @@ const LogoutButton = styled.button`
 
 const Title = styled.h1`
   &.beforeLogin {
-    font-size: max(15rem, 30px);
+    font-size: 15vmin;
+    margin: 15vmin 1vmin 0.5vmin;
     color: #a3a7e4;
     letter-spacing: 3vw;
     display: inline-block;
-    font-weight: normal;
+    font-weight: bold;
   }
   &.afterLogin {
     color: #934662;
     font-weight: normal;
+    margin: 5vmin;
   }
 `;
 

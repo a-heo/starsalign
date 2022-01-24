@@ -1,11 +1,32 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle` 
-  html, body {
+  :root {
+  --green: #B1C5A0;
+  --lilac: #A994BD;
+  --lightpink: #D9A9A9;
+  --pink: #D98BA0;
+  --darkpink: #D96C94;
+  --black: #171321;
+  --white: #f7f8fa;
+  --font-size: 1.3rem;
+  --regular: "Red Hat Display", sans-serif;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
     display: flex; 
     flex: 1 1 auto;
     background-color: white;
-    font-family: 'Zilla Slab';
+    font-family: 'Red Hat Display';
     min-width: 100%;
     height: 100%;
     margin: 0;
@@ -32,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
   input {
     border: 1px;
     background-color: #e5edc4;
-    font-family: 'Zilla SLab', serif;
+    font-family: 'Red Hat Display';
     font-size: min(calc(1rem + 1vw), 48px);
     justify-content: flex-end;
     color:  #a3a7e4;
@@ -43,19 +64,27 @@ const GlobalStyle = createGlobalStyle`
       background: #a3a7e4;
       color: #f0f1b3;
       border: 1px solid #f0f1b3;
-    &[type=submit] {
-      background-color: #421b9b;
-      &:hover {
-        background: #a3a7e4;
-        color: #f0f1b3;
+      &[type=submit] {
+        background-color: #421b9b;
+        &:hover {
+          background: #a3a7e4;
+          color: #f0f1b3;
+        }
       }
     }
   }
-  }
-  @media only screen and (max-width: 400px) {
-    h1 {
-        font-size: 2rem;
+  ${'' /* doesn't work  */}
+  ${'' /* @media (min-width: 850px) {
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    nav li:first-child {
+      flex-basis: auto;
+      text-align: left;
+      margin-right: auto;
+    }
+  } */}
 `;
 
 export default GlobalStyle;
