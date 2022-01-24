@@ -52,6 +52,7 @@ const Journal = () => {
   return (
     <JournalBox>
       <button onClick={() => { setModal(true); }}>Write Entry</button>
+      <br />
       <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} />
       <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
