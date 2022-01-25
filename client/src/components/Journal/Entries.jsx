@@ -54,7 +54,7 @@ const Entries = ({
         </Title>
         <br />
         <JournalSection className="date">
-          {journal.createdAt.slice(0, 10)}
+          Created:{' '}{journal.createdAt.slice(0, 10)}
         </JournalSection>
         <br />
         <JournalSection className="entry">
@@ -63,6 +63,9 @@ const Entries = ({
         <br />
         <JournalSection className="feelings">
           {journal.feelings}
+        </JournalSection>
+        <JournalSection className="lastupdated">
+          Last Updated:{' '}{journal.updatedAt.slice(0, 10)}
         </JournalSection>
         <button
           type="button"
