@@ -17,15 +17,14 @@ const Journal = () => {
   const [entries, setEntries] = useState(null);
   const { user, setUser } = useContext(UserContext);
   const [journalFilter, setJournalFilter] = useState('all');
-
-  const today = new Date().toLocaleDateString();
+  const [modalOn, setModal] = useState(false);
+  const [entryToChange, setEntryToChange] = useState({});
 
   const getEntries = (id) => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {
       // probably better storing all info into user so logout is cleaner?
-        console.log(result, 'results from getentries');
-        setEntries(result.data.reverse());
+        setEntries(result.data);
       })
       .catch((error) => {
         console.log(error, 'error in retrieving journal entries');
@@ -48,16 +47,13 @@ const Journal = () => {
 
   const editEntry = (journalId) => {
     console.log(journalId, 'editEntry', user);
-
   };
 
   return (
     <JournalBox>
-      <h3>
-        Journal Entry for{' '}
-        {today}
-      </h3>
-      <JournalForm setEntries={setEntries} />
+      <button onClick={() => { setModal(true); setEntryToChange(undefined)}}>Write Entry</button>
+      <br />
+      <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} journal={entryToChange} />
       <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
         <option value="all">All</option>
@@ -67,7 +63,16 @@ const Journal = () => {
         <option value="dark">Deep Abyss</option>
       </select>
       {entries
-        ? (<Entries entries={entries} deleteEntry={deleteEntry} journalFilter={journalFilter} editEntry={editEntry} />)
+        ? (
+          <Entries
+            entries={entries}
+            deleteEntry={deleteEntry}
+            journalFilter={journalFilter}
+            setModal={setModal}
+            setEntryToChange={setEntryToChange}
+            getEntries={getEntries}
+          />
+        )
         : null}
     </JournalBox>
   );
