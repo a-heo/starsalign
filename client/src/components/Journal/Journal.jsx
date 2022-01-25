@@ -19,7 +19,7 @@ const Journal = () => {
   const [journalFilter, setJournalFilter] = useState('all');
   const [modalOn, setModal] = useState(false);
   const [entryToChange, setEntryToChange] = useState({});
-  console.log(entries, 'inside journal');
+
   const getEntries = (id) => {
     axios.get(`/user/${id}/journal`)
       .then((result) => {

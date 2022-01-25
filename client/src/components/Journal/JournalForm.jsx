@@ -63,8 +63,8 @@ const JournalForm = ({
   return (
     <>
       {modalOn ? (
-        <Modal>
-          <ModalContent>
+        <Modal onClick={() => { setModal(false); }}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
             <ModalHeader>
               <h3>
                 {id ? 'Update entry'
