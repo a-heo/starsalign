@@ -45,15 +45,17 @@ const Journal = () => {
       });
   };
 
-  const editEntry = (journalId) => {
-    console.log(journalId, 'editEntry', user);
-  };
-
   return (
     <JournalBox>
-      <button onClick={() => { setModal(true); setEntryToChange(undefined)}}>Write Entry</button>
+      <button onClick={() => { setModal(true); setEntryToChange(undefined); }}>Write Entry</button>
       <br />
-      <JournalForm setEntries={setEntries} setModal={setModal} modalOn={modalOn} journal={entryToChange} />
+      <JournalForm
+        setEntries={setEntries}
+        setModal={setModal}
+        modalOn={modalOn}
+        journal={entryToChange}
+        getEntries={getEntries}
+      />
       <label htmlFor="options">Show</label>
       <select id="options" onChange={(e) => setJournalFilter(e.target.value)}>
         <option value="all">All</option>
@@ -62,6 +64,7 @@ const Journal = () => {
         <option value="difficult">Difficult</option>
         <option value="dark">Deep Abyss</option>
       </select>
+      <br />
       {entries
         ? (
           <Entries
@@ -73,7 +76,7 @@ const Journal = () => {
             getEntries={getEntries}
           />
         )
-        : null}
+        : `Start writing your thoughts when you're ready!`}
     </JournalBox>
   );
 };

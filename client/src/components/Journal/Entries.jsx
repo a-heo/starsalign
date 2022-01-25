@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const JournalBoxes = styled.div`
@@ -44,37 +44,8 @@ const Title = styled.b`
 `;
 
 const Entries = ({
-  entries, deleteEntry, setModal, journalFilter, setEntryToChange
+  entries, deleteEntry, setModal, journalFilter, setEntryToChange,
 }) => {
-
-  // const updateEntry = (journal) => (
-  //   <form>
-  //     <div>
-  //       <label for="title">Title</label>
-  //       <br />
-  //       <textarea name="title" placeholder="Enter Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-  //     </div>
-  //     <div>
-  //       <label for="entry">Entry</label>
-  //       <br />
-  //       <textarea name="entry" placeholder={journal.entry} rows="5" value={entry} onChange={(e) => setEntry(e.target.value)} required />
-  //     </div>
-  //     <div>
-  //       <label for="emotions">Emotional Level of this Entry</label>
-  //       <br />
-  //       <select value={emotion} onChange={(e) => setEmotion(e.target.value)} required>
-  //         <option />
-  //         <option value="happy">Happy</option>
-  //         <option value="neutral">Neutral</option>
-  //         <option value="difficult">Difficult</option>
-  //         <option value="dark">Deep Abyss</option>
-  //       </select>
-  //     </div>
-  //     <br />
-  //     <input type="submit" value="submit" />
-  //   </form>
-  // );
-
   const mapEntries = (posts) => posts.map((journal) => (
     <JournalBox key={journal.id}>
       <div>
@@ -112,10 +83,19 @@ const Entries = ({
     return mapEntries(post);
   };
 
-  return (
+  const loadEntries = () => (
     <JournalBoxes>
       {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
     </JournalBoxes>
+  );
+
+  return (
+    <div>
+      {loadEntries()}
+    </div>
+    // <JournalBoxes>
+    //   {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
+    // </JournalBoxes>
   );
 };
 

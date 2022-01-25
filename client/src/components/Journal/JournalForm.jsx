@@ -6,9 +6,11 @@ import {
 
 const axios = require('axios');
 
-const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => {
+const JournalForm = ({
+  setEntries, setModal, modalOn, journal, getEntries,
+}) => {
   const id = journal && journal.id ? journal.id : undefined;
-  //these conditions aren't working --need to figure out why
+  // these conditions aren't working --need to figure out why
   const [title, setTitle] = useState(id ? journal.title : '');
   const [entry, setEntry] = useState(id ? journal.entry : '');
   const [emotion, setEmotion] = useState(id ? journal.feelings : '');
@@ -17,7 +19,7 @@ const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => 
 
   const today = new Date().toLocaleDateString();
 
-  //brute force method for editing existing entry --need to fix 
+  // brute force method for editing existing entry --need to fix
   useEffect(() => {
     if (journal) {
       setTitle(journal.title);
@@ -27,7 +29,7 @@ const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => 
       setTitle('');
       setEntry('');
       setEmotion('');
-    };
+    }
   }, [journal]);
 
   const saveEntry = (data) => {
@@ -38,15 +40,19 @@ const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => 
       .then(setModal(false));
   };
 
+  const updateEntryArray = (updated, existing) => {
+    existing.title = updated.title;
+    existing.entry = updated.entry;
+    existing.feelings = updated.feelings;
+  };
+
   const updateEntry = (data) => {
-    axios.put(`/user/${user.id}/journal/${journal.id}`, data)
+    axios.put(`/user/journal/${journal.id}`, data)
       .then((result) => {
-        let currdata = result.data;
-        const newInfo = currdata.concat()
-        setEntries((oldEntries) => [...oldEntries, result.data]);
         getEntries(user.id);
       })
-      .then(setModal(false));
+      .then(setModal(false))
+      .catch((error) => console.log(error, 'cannot update entry'));
   };
 
   // create one state where all info gets updated into that one obj state
@@ -69,10 +75,9 @@ const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => 
           <ModalContent>
             <ModalHeader>
               <h3>
-                {id ? 'Update entry' :
-                  (`Journal Entry for ${today}`
-                  )
-                }
+                {id ? 'Update entry'
+                  : (`Journal Entry for ${today}`
+                  )}
               </h3>
             </ModalHeader>
             <ModalBody>
@@ -99,7 +104,7 @@ const JournalForm = ({ setEntries, setModal, modalOn, journal, getEntries }) => 
                   </select>
                 </div>
                 <br />
-                <input type="submit" value="submit" />
+                <input type="submit" value={journal ? 'edit' : 'submit'} />
               </form>
             </ModalBody>
             <ModalFooter>

@@ -30,4 +30,16 @@ module.exports = {
       .then(() => res.sendStatus(200))
       .catch((error) => console.log(error, 'error in deleting info'));
   },
+  update: (req, res) => {
+    console.log(req.body, req.params.id, 'inside update');
+    db.Journal.update({
+      title: req.body.title,
+      entry: req.body.entry,
+      feelings: req.body.feelings,
+    }, {
+      where: {id: req.params.id}
+    })
+      .then(() => res.send(200))
+      .catch((error) => console.log(error, 'error in updating'));
+  },
 };
