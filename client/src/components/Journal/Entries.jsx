@@ -83,19 +83,10 @@ const Entries = ({
     return mapEntries(post);
   };
 
-  const loadEntries = () => (
+  return (
     <JournalBoxes>
       {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
     </JournalBoxes>
-  );
-
-  return (
-    <div>
-      {loadEntries()}
-    </div>
-    // <JournalBoxes>
-    //   {journalFilter === 'all' ? (mapEntries(entries)) : (filteredEntries(entries))}
-    // </JournalBoxes>
   );
 };
 

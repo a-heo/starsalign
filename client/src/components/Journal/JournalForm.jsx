@@ -40,17 +40,9 @@ const JournalForm = ({
       .then(setModal(false));
   };
 
-  const updateEntryArray = (updated, existing) => {
-    existing.title = updated.title;
-    existing.entry = updated.entry;
-    existing.feelings = updated.feelings;
-  };
-
   const updateEntry = (data) => {
     axios.put(`/user/journal/${journal.id}`, data)
-      .then((result) => {
-        getEntries(user.id);
-      })
+      .then(getEntries(user.id))
       .then(setModal(false))
       .catch((error) => console.log(error, 'cannot update entry'));
   };
